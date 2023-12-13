@@ -54,9 +54,10 @@ p {
   font-family: 'Noto Serif', serif
 }
 
-a {
-  color: rgba(0, 0, 0, 1);
+a,
+li {
   text-decoration: none;
+  list-style: none;
 }
 
 /* h1 {

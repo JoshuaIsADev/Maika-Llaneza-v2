@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import MainNav from './MainNav';
+import MainNavCms from './MainNavCms';
 // import Row from './Row';
 
 const StyledHeader = styled.header`
@@ -16,12 +16,12 @@ const H1 = styled.h1`
   font-size: 1.4rem;
 `;
 
-function Header() {
+function HeaderCms() {
   return (
     <StyledHeader>
-      <H1 as='h2'>Maika Llaneza</H1>
-      <MainNav />
+      <H1 as='h2'>maikallaneza.com | content manager</H1>
+      <MainNavCms />
     </StyledHeader>
   );
 }
-export default Header;
+export default HeaderCms;

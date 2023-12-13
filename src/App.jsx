@@ -7,6 +7,12 @@ import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 import GlobalStyles from './styles/GlobalStyles';
 import AppLayout from './ui/AppLayout';
+import MainNavCms from './ui/MainNavCms';
+
+import AboutCms from './pages/AboutCms';
+import WritingsCms from './pages/WritingsCms';
+import ContactCms from './pages/ContactCms';
+import BlogCms from './pages/BlogCms';
 
 function App() {
   return (
@@ -20,6 +26,11 @@ function App() {
             <Route path='writings' element={<Writings />} />
             <Route path='contact' element={<Contact />} />
             <Route path='blog' element={<Blog />} />
+            <Route path='cms' element={<MainNavCms />} />
+            <Route path='aboutcms' element={<AboutCms />} />
+            <Route path='writingscms' element={<WritingsCms />} />
+            <Route path='contactcms' element={<ContactCms />} />
+            <Route path='blogcms' element={<BlogCms />} />
           </Route>
           <Route path='login' element={<Login />} />
           <Route path='*' element={<PageNotFound />} />
