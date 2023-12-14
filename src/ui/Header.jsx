@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   background-color: var(--color-grey-0);
   padding: 2rem;
-  max-width: 800px;
+  max-width: var(--container-width);
   margin: auto;
 `;
 

@@ -18,6 +18,8 @@ const GlobalStyles = createGlobalStyle`
   --border-radius-sm: .5rem;
   --border-radius-md: 1rem;
   --border-radius-lg: 2rem;
+
+  --container-width: 800px;
 }
 
 *,
@@ -75,6 +77,9 @@ input {
 
 button {
   cursor: pointer;
+  font-family: 'Noto Serif', serif;
+  width: 100%;
+  
 }
 `;
 

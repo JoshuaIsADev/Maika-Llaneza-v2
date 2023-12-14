@@ -26,7 +26,7 @@ const variations = {
 };
 
 const Button = styled.button`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 400;
   border-radius: var(--border-radius-lg);
   padding: 0.5rem 1.5rem;
