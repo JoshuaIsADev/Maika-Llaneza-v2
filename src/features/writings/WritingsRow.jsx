@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
+import Column from '../../ui/Column';
 
 const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
 `;
 
-const ButtonRow = styled.div`
+const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 1rem;
-  width: 200px;
+  gap: 0.5rem;
+  justify-content: right;
 `;
 
 function WritingsRow({ writing }) {
@@ -19,16 +21,50 @@ function WritingsRow({ writing }) {
 
   return (
     <TableRow role='row'>
-      <Row type='vertical'>
-        <Row>{title}</Row>
-        <Row>{publisher}</Row>
+      <Row role='row' type='horizontal' align='center'>
+        <Row role='row' type='horizontal'>
+          <Column type='info' role='col'>
+            Project title
+          </Column>
+          <Column type='input' role='col'>
+            <Row>{title}</Row>
+          </Column>
+        </Row>
+
+        <Row role='row' type='horizontal' align='center'>
+          <Column type='info' role='col'>
+            Publisher
+          </Column>
+          <Column type='input' role='col'>
+            <Row>{publisher}</Row>
+          </Column>
+        </Row>
+
+        <Row role='row' type='horizontal' align='center'>
+          <Column type='info' role='col'>
+            Published date
+          </Column>
+          <Column type='input' role='col'>
+            <Row>{date}</Row>
+          </Column>
+        </Row>
+
+        <Row role='row' type='horizontal' align='center'>
+          <Column type='info' role='col'>
+            URL
+          </Column>
+          <Column type='input' role='col'>
+            <Row>{url}</Row>
+          </Column>
+        </Row>
       </Row>
-      <Row>{date}</Row>
-      <Row>{url}</Row>
-      <ButtonRow>
-        <Button variation='secondary'>Edit</Button>
-        <Button variation='secondary'>Delete</Button>
-      </ButtonRow>
+
+      <Row role='row' type='horizontal' justify='right'>
+        <ButtonsContainer>
+          <Button variation='secondary'>Edit</Button>
+          <Button variation='secondary'>Delete</Button>
+        </ButtonsContainer>
+      </Row>
     </TableRow>
   );
 }
