@@ -38,30 +38,34 @@ function HeadlineRow({ headline }) {
         </Row>
 
         <Row role='row' type='horizontal'>
-          <Row role='row' type='horizontal'>
-            <Column type='info' role='col'>
-              Sub headline
-            </Column>
-            <Column type='input' role='col'>
-              <Input defaultValue={subHeadline} />
-            </Column>
-          </Row>
+          <Column type='info' role='col'>
+            Sub headline
+          </Column>
+          <Column type='input' role='col'>
+            <Input defaultValue={subHeadline} />
+          </Column>
+        </Row>
 
-          <Row role='row' type='horizontal'>
-            <Column type='info' role='col'>
-              Image
-            </Column>
-            <Column type='input' role='col'>
-              <Img src={image}></Img>
-            </Column>
-          </Row>
+        <Row role='row' type='horizontal' $variation='buttons'>
+          <ButtonsContainer>
+            <Button $variation='secondary'>Undo</Button>
+            <Button $variation='primary'>Save</Button>
+          </ButtonsContainer>
+        </Row>
 
-          <Row role='row' type='horizontal' $variation='buttons'>
-            <ButtonsContainer>
-              <Button $variation='secondary'>Undo</Button>
-              <Button $variation='primary'>Save</Button>
-            </ButtonsContainer>
-          </Row>
+        <Row role='row' type='horizontal'>
+          <Column type='info' role='col'>
+            Image
+          </Column>
+          <Column type='input' role='col'>
+            <Img src={image}></Img>
+          </Column>
+        </Row>
+
+        <Row role='row' type='horizontal' $variation='buttons'>
+          <ButtonsContainer>
+            <Button $variation='primary'>Upload</Button>
+          </ButtonsContainer>
         </Row>
       </Row>
     </TableRow>
