@@ -13,14 +13,14 @@ import AppLayout from './ui/AppLayout';
 import MainNavCms from './ui/MainNavCms';
 
 import AboutCms from './pages/AboutCms';
-import WritingsCms from './pages/WritingsCms';
 import ContactCms from './pages/ContactCms';
 import BlogCms from './pages/BlogCms';
+import ProjectsCms from './pages/ProjectsCms';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000,
+      staleTime: 0,
     },
   },
 });
@@ -41,7 +41,7 @@ function App() {
             <Route path='blog' element={<Blog />} />
             <Route path='cms' element={<MainNavCms />} />
             <Route path='aboutcms' element={<AboutCms />} />
-            <Route path='writingscms' element={<WritingsCms />} />
+            <Route path='projectscms' element={<ProjectsCms />} />
             <Route path='contactcms' element={<ContactCms />} />
             <Route path='blogcms' element={<BlogCms />} />
           </Route>

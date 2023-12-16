@@ -49,7 +49,7 @@ function MainNav() {
           <StyledNavLink to='/aboutcms'>about cms</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/writingscms'>writings cms</StyledNavLink>
+          <StyledNavLink to='/projectscms'>projects cms</StyledNavLink>
         </li>
         <li>
           <StyledNavLink to='/blogcms'>blog cms</StyledNavLink>

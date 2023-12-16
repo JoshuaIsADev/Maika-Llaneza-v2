@@ -3,6 +3,8 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteProject } from '../../services/apiProjects';
 
 const TableRow = styled.div`
   display: flex;
@@ -17,8 +19,19 @@ const ButtonsContainer = styled.div`
   justify-content: right;
 `;
 
-function WritingsRow({ writing }) {
-  const { title, publisher, date, url } = writing;
+function ProjectRow({ project }) {
+  const { id: projectId, title, publisher, date, url } = project;
+
+  const queryClient = useQueryClient();
+
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteProject(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['projects'],
+      });
+    },
+  });
 
   return (
     <TableRow role='vertical'>
@@ -62,7 +75,13 @@ function WritingsRow({ writing }) {
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
-          <Button $variation='danger'>Delete</Button>
+          <Button
+            onClick={() => mutate(projectId)}
+            disabled={isDeleting}
+            $variation='danger'
+          >
+            Delete
+          </Button>
           <Button $variation='secondary'>Undo</Button>
           <Button $variation='primary'>Save</Button>
         </ButtonsContainer>
@@ -71,4 +90,4 @@ function WritingsRow({ writing }) {
   );
 }
 
-export default WritingsRow;
+export default ProjectRow;
