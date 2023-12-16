@@ -9,6 +9,8 @@ const Column = styled.div`
       display: flex;
       width: 20%;
       min-width: 150px;
+      font-size: 1.4rem;
+      color: var(--color-grey-300);
     `}
 
   ${(props) =>
@@ -17,6 +19,8 @@ const Column = styled.div`
       display: flex;
       width: 80%;
       text-align: left;
+      font-size: 1.4rem;
+      color: var(--color-grey-900);
     `}
 `;
 

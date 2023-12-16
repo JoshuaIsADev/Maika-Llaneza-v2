@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
+import Input from '../../ui/Input';
 
 const TableRow = styled.div`
   display: flex;
@@ -20,49 +21,50 @@ function WritingsRow({ writing }) {
   const { title, publisher, date, url } = writing;
 
   return (
-    <TableRow role='row'>
-      <Row role='row' type='horizontal' align='center'>
+    <TableRow role='vertical'>
+      <Row role='row' type='horizontal'>
         <Row role='row' type='horizontal'>
           <Column type='info' role='col'>
             Project title
           </Column>
           <Column type='input' role='col'>
-            <Row>{title}</Row>
+            <Input defaultValue={title} />
           </Column>
         </Row>
 
-        <Row role='row' type='horizontal' align='center'>
+        <Row role='row' type='horizontal'>
           <Column type='info' role='col'>
             Publisher
           </Column>
           <Column type='input' role='col'>
-            <Row>{publisher}</Row>
+            <Input defaultValue={publisher} />
           </Column>
         </Row>
 
-        <Row role='row' type='horizontal' align='center'>
+        <Row role='row' type='horizontal'>
           <Column type='info' role='col'>
             Published date
           </Column>
           <Column type='input' role='col'>
-            <Row>{date}</Row>
+            <Input defaultValue={date} />
           </Column>
         </Row>
 
-        <Row role='row' type='horizontal' align='center'>
+        <Row role='row' type='horizontal'>
           <Column type='info' role='col'>
             URL
           </Column>
           <Column type='input' role='col'>
-            <Row>{url}</Row>
+            <Input defaultValue={url} />
           </Column>
         </Row>
       </Row>
 
-      <Row role='row' type='horizontal' justify='right'>
+      <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
-          <Button variation='secondary'>Edit</Button>
-          <Button variation='secondary'>Delete</Button>
+          <Button $variation='danger'>Delete</Button>
+          <Button $variation='secondary'>Undo</Button>
+          <Button $variation='primary'>Save</Button>
         </ButtonsContainer>
       </Row>
     </TableRow>

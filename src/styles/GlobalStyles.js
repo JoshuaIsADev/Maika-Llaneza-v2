@@ -12,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-700: #2e2e2e;
   --color-grey-800: #161616;
   --color-grey-900: #000000;
+  
+  --color-danger: #D13200;
 
   --backdrop-color: rgba(255, 255, 255, 1);
 
@@ -70,9 +72,10 @@ li {
   color: rgba(0, 0, 0, 1);
 } */
 
-input {
+input,
+textarea {
   font-family: 'Noto Serif', serif;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 button {

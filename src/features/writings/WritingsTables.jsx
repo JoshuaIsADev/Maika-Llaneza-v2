@@ -1,13 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { getWritingsList } from '../../services/apiWritingsList';
 import Spinner from '../../ui/Spinner';
-import styled from 'styled-components';
-import WritingsRow from './WritingsRow';
-
-const Table = styled.div`
-  border: 1px solid var(--color-grey-200);
-  width: 100%;
-`;
+import WritingsRow from './WritingsRows';
+import Table from '../../ui/Table';
 
 function WritingsTable() {
   const {

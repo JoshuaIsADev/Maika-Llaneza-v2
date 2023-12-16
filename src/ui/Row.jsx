@@ -1,29 +1,9 @@
 import styled, { css } from 'styled-components';
 
-const align = {
-  top: css`
-    align-items: flex-start;
-  `,
-  bottom: css`
-    align-items: flex-end;
-  `,
-  center: css`
-    align-items: center;
-  `,
-};
-
-const justify = {
-  left: css`
-    justify-content: left;
-  `,
-  right: css`
+const variations = {
+  buttons: css`
     justify-content: right;
-  `,
-  center: css`
-    justify-content: center;
-  `,
-  between: css`
-    justify-content: space-between;
+    padding-bottom: 3rem;
   `,
 };
 
@@ -34,17 +14,18 @@ const Row = styled.div`
     props.type === 'horizontal' &&
     css`
       flex-direction: row;
-      ${(props) => align[props.align]}
-      ${(props) => justify[props.justify]}
+      align-items: center;
+      padding-bottom: 1rem;
       flex-wrap: wrap;
       width: 100%;
+      ${(props) => variations[props.$variation]}
     `}
 
   ${(props) =>
     props.type === 'vertical' &&
     css`
       flex-direction: column;
-      /* align-items: left; */
+      ${(props) => variations[props.$variation]}
     `}
 `;
 

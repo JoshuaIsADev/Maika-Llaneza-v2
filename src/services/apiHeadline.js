@@ -1,7 +1,7 @@
 import supabase from './supabase';
 
-export async function getAbout() {
-  let { data, error } = await supabase.from('about').select('*');
+export async function getHeadline() {
+  let { data, error } = await supabase.from('headline').select('*');
 
   if (error) {
     console.log(error);
