@@ -4,6 +4,8 @@ import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteParagraph } from '../../services/apiParagraphs';
 
 const TableRow = styled.div`
   display: flex;
@@ -19,7 +21,20 @@ const ButtonsContainer = styled.div`
 `;
 
 function ParagraphRow({ paragraph }) {
-  const { title, paragraphText } = paragraph;
+  const { id: paragraphId, title, paragraphText } = paragraph;
+
+  const queryClient = useQueryClient();
+
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteParagraph(id),
+    onSuccess: () => {
+      alert('Paragraph deleted');
+      queryClient.invalidateQueries({
+        queryKey: ['paragraphs'],
+      });
+    },
+    onError: (err) => alert(err.message),
+  });
 
   return (
     <TableRow role='vertical'>
@@ -44,7 +59,13 @@ function ParagraphRow({ paragraph }) {
 
         <Row role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>
-            <Button $variation='danger'>Delete</Button>
+            <Button
+              onClick={() => mutate(paragraphId)}
+              disabled={isDeleting}
+              $variation='danger'
+            >
+              Delete
+            </Button>
             <Button $variation='secondary'>Undo</Button>
             <Button $variation='primary'>Save</Button>
           </ButtonsContainer>

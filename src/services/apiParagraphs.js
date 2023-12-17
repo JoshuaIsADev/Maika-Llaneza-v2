@@ -5,7 +5,21 @@ export async function getParagraphs() {
 
   if (error) {
     console.log(error);
-    throw new Error('About could not be loaded');
+    throw new Error('Paragraph could not be loaded');
+  }
+
+  return data;
+}
+
+export async function deleteParagraph(id) {
+  const { data, error } = await supabase
+    .from('paragraphs')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.log(error);
+    throw new Error('Paragraph could not be deleted');
   }
 
   return data;
