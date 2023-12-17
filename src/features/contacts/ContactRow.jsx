@@ -3,6 +3,8 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteContact } from '../../services/apiContacts';
 
 const TableRow = styled.div`
   display: flex;
@@ -18,7 +20,20 @@ const ButtonsContainer = styled.div`
 `;
 
 function ContactRow({ contact }) {
-  const { name, url } = contact;
+  const { id: contactId, name, url } = contact;
+
+  const queryClient = useQueryClient();
+
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteContact(id),
+    onSuccess: () => {
+      alert('Contact deleted');
+      queryClient.invalidateQueries({
+        queryKey: ['contacts'],
+      });
+    },
+    onError: (err) => alert(err.message),
+  });
 
   return (
     <TableRow role='vertical'>
@@ -44,7 +59,13 @@ function ContactRow({ contact }) {
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
-          <Button $variation='danger'>Delete</Button>
+          <Button
+            onClick={() => mutate(contactId)}
+            disabled={isDeleting}
+            $variation='danger'
+          >
+            Delete
+          </Button>
           <Button $variation='secondary'>Undo</Button>
           <Button $variation='primary'>Save</Button>
         </ButtonsContainer>

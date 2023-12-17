@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getContactList } from '../../services/apiContact';
+import { getContacts } from '../../services/apiContacts';
 import Spinner from '../../ui/Spinner';
 import Table from '../../ui/Table';
 import ContactRow from './ContactRow';
@@ -11,7 +11,7 @@ function ContactTable() {
     // error,
   } = useQuery({
     queryKey: ['contacts'],
-    queryFn: getContactList,
+    queryFn: getContacts,
   });
 
   if (isLoading) return <Spinner />;

@@ -55,7 +55,7 @@ function MainNav() {
           <StyledNavLink to='/blogcms'>blog cms</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/contactcms'>contact cms</StyledNavLink>
+          <StyledNavLink to='/contactscms'>contact cms</StyledNavLink>
         </li>
       </NavList>
     </nav>

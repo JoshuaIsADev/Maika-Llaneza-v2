@@ -1,9 +1,9 @@
-import ContactHeadlineTable from '../features/contact/ContactHeadlineTable';
-import ContactTable from '../features/contact/ContactTable';
+import ContactHeadlineTable from '../features/contacts/ContactHeadlineTable';
+import ContactTable from '../features/contacts/ContactTable';
 // import Heading from '../ui/Heading';
 import Row from '../ui/Row';
 
-function ContactCms() {
+function ContactsCms() {
   return (
     <>
       <Row>
@@ -16,4 +16,4 @@ function ContactCms() {
   );
 }
 
-export default ContactCms;
+export default ContactsCms;

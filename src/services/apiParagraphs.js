@@ -1,7 +1,7 @@
 import supabase from './supabase';
 
-export async function getParagraph() {
-  let { data, error } = await supabase.from('paragraph').select('*');
+export async function getParagraphs() {
+  let { data, error } = await supabase.from('paragraphs').select('*');
 
   if (error) {
     console.log(error);

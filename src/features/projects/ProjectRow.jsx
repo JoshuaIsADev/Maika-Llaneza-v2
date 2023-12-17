@@ -27,10 +27,12 @@ function ProjectRow({ project }) {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: (id) => deleteProject(id),
     onSuccess: () => {
+      alert('Project deleted');
       queryClient.invalidateQueries({
         queryKey: ['projects'],
       });
     },
+    onError: (err) => alert(err.message),
   });
 
   return (

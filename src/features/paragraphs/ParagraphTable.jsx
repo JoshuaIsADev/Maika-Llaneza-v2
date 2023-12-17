@@ -1,24 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
-import { getParagraph } from '../../services/apiParagraph';
+import { getParagraphs } from '../../services/apiParagraphs';
 import Spinner from '../../ui/Spinner';
-import ParagraphRow from '../paragraph/ParagraphRow';
+import ParagraphRow from '../paragraphs/ParagraphRow';
 import Table from '../../ui/Table';
 
 function ParagraphTable() {
   const {
     isLoading,
-    data: paragraph,
+    data: paragraphs,
     // error,
   } = useQuery({
-    queryKey: ['paragraph'],
-    queryFn: getParagraph,
+    queryKey: ['paragraphs'],
+    queryFn: getParagraphs,
   });
 
   if (isLoading) return <Spinner />;
 
   return (
     <Table role='table'>
-      {paragraph.map((paragraph) => (
+      {paragraphs.map((paragraph) => (
         <ParagraphRow paragraph={paragraph} key={paragraph.id} />
       ))}
     </Table>

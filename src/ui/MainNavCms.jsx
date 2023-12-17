@@ -40,7 +40,7 @@ function MainNavCms() {
           <StyledNavLink to='/writingscms'>writings cms</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/contactcms'>contact cms</StyledNavLink>
+          <StyledNavLink to='/contactscms'>contact cms</StyledNavLink>
         </li>
       </NavList>
     </nav>

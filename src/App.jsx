@@ -13,7 +13,7 @@ import AppLayout from './ui/AppLayout';
 import MainNavCms from './ui/MainNavCms';
 
 import AboutCms from './pages/AboutCms';
-import ContactCms from './pages/ContactCms';
+import ContactsCms from './pages/ContactsCms';
 import BlogCms from './pages/BlogCms';
 import ProjectsCms from './pages/ProjectsCms';
 
@@ -42,7 +42,7 @@ function App() {
             <Route path='cms' element={<MainNavCms />} />
             <Route path='aboutcms' element={<AboutCms />} />
             <Route path='projectscms' element={<ProjectsCms />} />
-            <Route path='contactcms' element={<ContactCms />} />
+            <Route path='contactscms' element={<ContactsCms />} />
             <Route path='blogcms' element={<BlogCms />} />
           </Route>
           <Route path='login' element={<Login />} />
