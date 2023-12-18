@@ -6,7 +6,6 @@ import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
-import FormRow from '../../ui/FormRow';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import Label from '../../ui/Label';
 
@@ -29,44 +28,44 @@ function ProjectRow({ project }) {
   return (
     <Form role='vertical'>
       <Row role='row' type='horizontal'>
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='title'>
             Project title
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={title} id='title' />
           </Column>
-        </FormRow>
+        </Row>
 
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='title'>
             Publisher
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={publisher} id='publisher' />
           </Column>
-        </FormRow>
+        </Row>
 
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='date'>
             Published date
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={date} id='date' />
           </Column>
-        </FormRow>
+        </Row>
 
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='url'>
             URL
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={url} id='url' />
           </Column>
-        </FormRow>
+        </Row>
       </Row>
 
-      <FormRow role='row' type='horizontal' $variation='buttons'>
+      <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
           <Button
             onClick={() => mutate(projectId)}
@@ -81,7 +80,7 @@ function ProjectRow({ project }) {
           </Button>
           <Button $variation='primary'>Save</Button>
         </ButtonsContainer>
-      </FormRow>
+      </Row>
     </Form>
   );
 }

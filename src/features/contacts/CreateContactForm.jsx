@@ -4,13 +4,10 @@ import toast from 'react-hot-toast';
 import { createContact } from '../../services/apiContacts';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
-import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import FormRow from '../../ui/FormRow';
 import Form from '../../ui/Form';
-import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import Error from '../../ui/Error';
 
 function CreateContactForm() {
   const { register, handleSubmit, reset, formState } = useForm();
@@ -42,40 +39,35 @@ function CreateContactForm() {
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <FormRow role='row' type='horizontal'>
-          <Label type='info' htmlFor='name'>
-            Contact name
-          </Label>
-          <Column type='input' role='col'>
-            {errors?.name?.message && <Error>{errors.name.message}</Error>}
-            <Input
-              id='name'
-              {...register('name', {
-                required: 'Please enter a name for the link',
-              })}
-            />
-          </Column>
+        <FormRow label='Contact name' error={errors?.name?.message}>
+          <Input
+            id='name'
+            disabled={isCreating}
+            {...register('name', {
+              required: 'Please enter a name for the link',
+            })}
+          />
         </FormRow>
 
-        <FormRow role='row' type='horizontal'>
-          <Label type='info' htmlFor='url'>
-            URL
-          </Label>
-          <Column type='input' role='col'>
-            {errors?.url?.message && <Error>{errors.url.message}</Error>}
-            <Input
-              id='url'
-              {...register('url', {
-                required: 'Please enter the url',
-              })}
-            />
-          </Column>
+        <FormRow
+          label='URL'
+          error={errors?.url?.message}
+          role='row'
+          type='horizontal'
+        >
+          <Input
+            id='url'
+            disabled={isCreating}
+            {...register('url', {
+              required: 'Please enter the url',
+            })}
+          />
         </FormRow>
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
-          <Button $variation='secondary' type='reset'>
+          <Button $variation='secondary' type='reset' disabled={isCreating}>
             Cancel
           </Button>
           <Button $variation='primary' type='submit' disabled={isCreating}>

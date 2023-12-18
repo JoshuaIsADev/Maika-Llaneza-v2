@@ -6,7 +6,6 @@ import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import toast from 'react-hot-toast';
-import FormRow from '../../ui/FormRow';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
@@ -30,25 +29,25 @@ function ParagraphRow({ paragraph }) {
   return (
     <Form type='vertical'>
       <Row role='row' type='horizontal'>
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='paragraphTitle'>
             Paragraph title
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={title} id='paragraphTitle' />
           </Column>
-        </FormRow>
+        </Row>
 
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='paragraph'>
             Paragraph
           </Label>
           <Column type='input' role='col'>
             <TextArea rows='12' defaultValue={paragraphText} id='paragrph' />
           </Column>
-        </FormRow>
+        </Row>
 
-        <FormRow role='row' type='horizontal' $variation='buttons'>
+        <Row role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>
             <Button
               onClick={() => mutate(paragraphId)}
@@ -63,7 +62,7 @@ function ParagraphRow({ paragraph }) {
             </Button>
             <Button $variation='primary'>Save</Button>
           </ButtonsContainer>
-        </FormRow>
+        </Row>
       </Row>
     </Form>
   );

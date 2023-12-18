@@ -1,32 +1,23 @@
-import styled, { css } from 'styled-components';
+// import styled, { css } from 'styled-components';
+import Label from './Label';
+import Column from './Column';
+import Error from './Error';
+import Row from './Row';
 
-const variations = {
-  buttons: css`
-    justify-content: right;
-    padding-bottom: 3rem;
-  `,
-};
-
-const FormRow = styled.div`
-  display: flex;
-
-  ${(props) =>
-    props.type === 'horizontal' &&
-    css`
-      flex-direction: row;
-      align-items: center;
-      padding-bottom: 1rem;
-      flex-wrap: wrap;
-      width: 100%;
-      ${(props) => variations[props.$variation]}
-    `}
-
-  ${(props) =>
-    props.type === 'vertical' &&
-    css`
-      flex-direction: column;
-      ${(props) => variations[props.$variation]}
-    `}
-`;
+function FormRow({ label, error, children }) {
+  return (
+    <Row role='row' type='horizontal'>
+      {label && (
+        <Label type='info' htmlFor={children.props.id}>
+          {label}
+        </Label>
+      )}
+      <Column type='input' role='col'>
+        {error && <Error>{error}</Error>}
+        {children}
+      </Column>
+    </Row>
+  );
+}
 
 export default FormRow;

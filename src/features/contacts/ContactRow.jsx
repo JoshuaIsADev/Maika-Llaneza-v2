@@ -5,7 +5,6 @@ import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import toast from 'react-hot-toast';
-import FormRow from '../../ui/FormRow';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
@@ -29,23 +28,23 @@ function ContactRow({ contact }) {
   return (
     <Form role='vertical'>
       <Row role='row' type='horizontal'>
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='name'>
             Contact name
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={name} id='name' />
           </Column>
-        </FormRow>
+        </Row>
 
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='url'>
             URL
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={url} id='url' />
           </Column>
-        </FormRow>
+        </Row>
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>

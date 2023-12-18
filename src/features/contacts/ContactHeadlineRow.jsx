@@ -2,7 +2,6 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
-import FormRow from '../../ui/FormRow';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
@@ -13,14 +12,14 @@ function ContactHeadlineRow({ contactHeadline }) {
   return (
     <Form role='vertical'>
       <Row role='row' type='horizontal'>
-        <FormRow role='row' type='horizontal'>
+        <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='headline'>
             Contact headline
           </Label>
           <Column type='input' role='col'>
             <Input defaultValue={headline} id='headline' />
           </Column>
-        </FormRow>
+        </Row>
 
         <Row role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>

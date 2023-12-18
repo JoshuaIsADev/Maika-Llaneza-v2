@@ -3,19 +3,8 @@ import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
-
-const TableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: right;
-`;
+import Form from '../../ui/Form';
+import ButtonsContainer from '../../ui/ButtonsContainer';
 
 const Img = styled.img`
   object-fit: contain;
@@ -26,7 +15,7 @@ function HeadlineRow({ headline }) {
   const { headlineText, subHeadline, image } = headline;
 
   return (
-    <TableRow role='vertical'>
+    <Form role='vertical'>
       <Row role='row' type='horizontal'>
         <Row role='row' type='horizontal'>
           <Column type='info' role='col'>
@@ -68,7 +57,7 @@ function HeadlineRow({ headline }) {
           </ButtonsContainer>
         </Row>
       </Row>
-    </TableRow>
+    </Form>
   );
 }
 

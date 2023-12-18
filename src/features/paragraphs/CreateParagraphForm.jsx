@@ -4,14 +4,11 @@ import toast from 'react-hot-toast';
 import { createParagraph } from '../../services/apiParagraphs';
 import Button from '../../ui/Button';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import Column from '../../ui/Column';
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
-import Label from '../../ui/Label';
 import Row from '../../ui/Row';
 import TextArea from '../../ui/TextArea';
-import Error from '../../ui/Error';
 
 function CreateParagraphForm() {
   const { register, handleSubmit, reset, formState } = useForm();
@@ -42,43 +39,31 @@ function CreateParagraphForm() {
   return (
     <Form type='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <FormRow role='row' type='horizontal'>
-          <Label type='info' htmlFor='title'>
-            Paragraph title
-          </Label>
-          <Column type='input' role='col'>
-            <Input id='title' {...register('title')} />
-          </Column>
+        <FormRow label='Paragraph title'>
+          <Input id='title' disabled={isCreating} {...register('title')} />
         </FormRow>
 
-        <FormRow role='row' type='horizontal'>
-          <Label type='info' htmlFor='paragraph'>
-            Paragraph
-          </Label>
-          <Column type='input' role='col'>
-            {errors?.paragraphText?.message && (
-              <Error>{errors.paragraphText.message}</Error>
-            )}
-            <TextArea
-              rows='12'
-              id='paragrphText'
-              {...register('paragraphText', {
-                required: 'Please write a paragraph',
-              })}
-            />
-          </Column>
+        <FormRow label='Paragraph' error={errors?.paragraphText?.message}>
+          <TextArea
+            rows='12'
+            id='paragrphText'
+            disabled={isCreating}
+            {...register('paragraphText', {
+              required: 'Please write a paragraph',
+            })}
+          />
         </FormRow>
 
-        <FormRow role='row' type='horizontal' $variation='buttons'>
+        <Row role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>
-            <Button type='reset' $variation='secondary'>
+            <Button type='reset' $variation='secondary' disabled={isCreating}>
               Cancel
             </Button>
             <Button type='submit' $variation='primary' disabled={isCreating}>
               Create
             </Button>
           </ButtonsContainer>
-        </FormRow>
+        </Row>
       </Row>
     </Form>
   );
