@@ -5,6 +5,7 @@ import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteProject } from '../../services/apiProjects';
+import toast from 'react-hot-toast';
 
 const TableRow = styled.div`
   display: flex;
@@ -27,12 +28,12 @@ function ProjectRow({ project }) {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: (id) => deleteProject(id),
     onSuccess: () => {
-      alert('Project deleted');
+      toast.success('Project deleted');
       queryClient.invalidateQueries({
         queryKey: ['projects'],
       });
     },
-    onError: (err) => alert(err.message),
+    onError: (err) => toast.error(err.message),
   });
 
   return (

@@ -39,9 +39,9 @@ function MainNav() {
         <li>
           <StyledNavLink to='/writings'>writings</StyledNavLink>
         </li>
-        <li>
+        {/* <li>
           <StyledNavLink to='/blog'>blog</StyledNavLink>
-        </li>
+        </li> */}
         <li>
           <StyledNavLink to='/contact'>contact</StyledNavLink>
         </li>
@@ -51,9 +51,9 @@ function MainNav() {
         <li>
           <StyledNavLink to='/projectscms'>projects cms</StyledNavLink>
         </li>
-        <li>
+        {/* <li>
           <StyledNavLink to='/blogcms'>blog cms</StyledNavLink>
-        </li>
+        </li> */}
         <li>
           <StyledNavLink to='/contactscms'>contact cms</StyledNavLink>
         </li>

@@ -11,6 +11,20 @@ export async function getParagraphs() {
   return data;
 }
 
+export async function createParagraph(newParagraph) {
+  const { data, error } = await supabase
+    .from('paragraphs')
+    .insert([newParagraph])
+    .select();
+
+  if (error) {
+    console.log(error);
+    throw new Error('Paragraph could not be created');
+  }
+
+  return data;
+}
+
 export async function deleteParagraph(id) {
   const { data, error } = await supabase
     .from('paragraphs')

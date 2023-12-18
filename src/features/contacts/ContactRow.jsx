@@ -5,6 +5,7 @@ import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteContact } from '../../services/apiContacts';
+import toast from 'react-hot-toast';
 
 const TableRow = styled.div`
   display: flex;
@@ -27,12 +28,12 @@ function ContactRow({ contact }) {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: (id) => deleteContact(id),
     onSuccess: () => {
-      alert('Contact deleted');
+      toast.success('Contact deleted');
       queryClient.invalidateQueries({
         queryKey: ['contacts'],
       });
     },
-    onError: (err) => alert(err.message),
+    onError: (err) => toast.error(err.message),
   });
 
   return (

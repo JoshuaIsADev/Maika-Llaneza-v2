@@ -1,24 +1,15 @@
-import styled from 'styled-components';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteParagraph } from '../../services/apiParagraphs';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteParagraph } from '../../services/apiParagraphs';
-
-const TableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: right;
-`;
+import toast from 'react-hot-toast';
+import FormRow from '../../ui/FormRow';
+import Form from '../../ui/Form';
+import Label from '../../ui/Label';
+import ButtonsContainer from '../../ui/ButtonsContainer';
 
 function ParagraphRow({ paragraph }) {
   const { id: paragraphId, title, paragraphText } = paragraph;
@@ -28,36 +19,36 @@ function ParagraphRow({ paragraph }) {
   const { isLoading: isDeleting, mutate } = useMutation({
     mutationFn: (id) => deleteParagraph(id),
     onSuccess: () => {
-      alert('Paragraph deleted');
+      toast.success('Paragraph deleted');
       queryClient.invalidateQueries({
         queryKey: ['paragraphs'],
       });
     },
-    onError: (err) => alert(err.message),
+    onError: (err) => toast.error(err.message),
   });
 
   return (
-    <TableRow role='vertical'>
+    <Form type='vertical'>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='paragraphTitle'>
             Paragraph title
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={title} />
+            <Input defaultValue={title} id='paragraphTitle' />
           </Column>
-        </Row>
+        </FormRow>
 
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='paragraph'>
             Paragraph
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <TextArea rows='12' defaultValue={paragraphText} />
+            <TextArea rows='12' defaultValue={paragraphText} id='paragrph' />
           </Column>
-        </Row>
+        </FormRow>
 
-        <Row role='row' type='horizontal' $variation='buttons'>
+        <FormRow role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>
             <Button
               onClick={() => mutate(paragraphId)}
@@ -69,9 +60,9 @@ function ParagraphRow({ paragraph }) {
             <Button $variation='secondary'>Undo</Button>
             <Button $variation='primary'>Save</Button>
           </ButtonsContainer>
-        </Row>
+        </FormRow>
       </Row>
-    </TableRow>
+    </Form>
   );
 }
 
