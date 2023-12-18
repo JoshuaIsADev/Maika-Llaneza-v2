@@ -11,6 +11,18 @@ export async function getProjects() {
   return data;
 }
 
+export async function createProject(newProject) {
+  const { data, error } = await supabase
+    .from('projects')
+    .insert([newProject])
+    .select();
+
+  if (error) {
+    console.log(error);
+    throw new Error('Project could not be created');
+  }
+}
+
 export async function deleteProject(id) {
   const { data, error } = await supabase.from('projects').delete().eq('id', id);
 

@@ -54,10 +54,13 @@ function ParagraphRow({ paragraph }) {
               onClick={() => mutate(paragraphId)}
               disabled={isDeleting}
               $variation='danger'
+              type='button'
             >
               Delete
             </Button>
-            <Button $variation='secondary'>Undo</Button>
+            <Button $variation='secondary' type='reset'>
+              Undo
+            </Button>
             <Button $variation='primary'>Save</Button>
           </ButtonsContainer>
         </FormRow>

@@ -17,12 +17,12 @@ function AboutCms() {
       <Row>
         <ParagraphTable />
       </Row>
-      <Row>{showForm && <CreateParagraphForm />}</Row>
       <Row>
         <Button $variation='add' onClick={() => setShowForm((show) => !show)}>
           Add a new paragraph
         </Button>
       </Row>
+      <Row>{showForm && <CreateParagraphForm />}</Row>
     </>
   );
 }

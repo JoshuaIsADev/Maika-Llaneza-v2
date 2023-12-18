@@ -1,24 +1,14 @@
-import styled from 'styled-components';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteContact } from '../../services/apiContacts';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteContact } from '../../services/apiContacts';
 import toast from 'react-hot-toast';
-
-const TableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: right;
-`;
+import FormRow from '../../ui/FormRow';
+import Form from '../../ui/Form';
+import Label from '../../ui/Label';
+import ButtonsContainer from '../../ui/ButtonsContainer';
 
 function ContactRow({ contact }) {
   const { id: contactId, name, url } = contact;
@@ -37,25 +27,25 @@ function ContactRow({ contact }) {
   });
 
   return (
-    <TableRow role='vertical'>
+    <Form role='vertical'>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='name'>
             Contact name
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={name} />
+            <Input defaultValue={name} id='name' />
           </Column>
-        </Row>
+        </FormRow>
 
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='url'>
             URL
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={url} />
+            <Input defaultValue={url} id='url' />
           </Column>
-        </Row>
+        </FormRow>
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>
@@ -64,14 +54,17 @@ function ContactRow({ contact }) {
             onClick={() => mutate(contactId)}
             disabled={isDeleting}
             $variation='danger'
+            type='button'
           >
             Delete
           </Button>
-          <Button $variation='secondary'>Undo</Button>
+          <Button $variation='secondary' type='reset'>
+            Undo
+          </Button>
           <Button $variation='primary'>Save</Button>
         </ButtonsContainer>
       </Row>
-    </TableRow>
+    </Form>
   );
 }
 

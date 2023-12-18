@@ -17,6 +17,7 @@ const Column = styled.div`
     props.type === 'input' &&
     css`
       display: flex;
+      flex-wrap: wrap;
       width: 80%;
       text-align: left;
       font-size: 1.4rem;

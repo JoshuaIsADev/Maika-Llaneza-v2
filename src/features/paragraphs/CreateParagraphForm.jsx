@@ -1,4 +1,7 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { createParagraph } from '../../services/apiParagraphs';
 import Button from '../../ui/Button';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import Column from '../../ui/Column';
@@ -8,12 +11,13 @@ import Input from '../../ui/Input';
 import Label from '../../ui/Label';
 import Row from '../../ui/Row';
 import TextArea from '../../ui/TextArea';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createParagraph } from '../../services/apiParagraphs';
-import toast from 'react-hot-toast';
+import Error from '../../ui/Error';
 
 function CreateParagraphForm() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState } = useForm();
+
+  const { errors } = formState;
+  console.log(errors);
 
   const queryClient = useQueryClient();
 
@@ -31,8 +35,12 @@ function CreateParagraphForm() {
     mutate(data);
   }
 
+  function onError(errors) {
+    console.log(errors);
+  }
+
   return (
-    <Form type='vertical' onSubmit={handleSubmit(onSubmit)}>
+    <Form type='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
         <FormRow role='row' type='horizontal'>
           <Label type='info' htmlFor='title'>
@@ -48,10 +56,15 @@ function CreateParagraphForm() {
             Paragraph
           </Label>
           <Column type='input' role='col'>
+            {errors?.paragraphText?.message && (
+              <Error>{errors.paragraphText.message}</Error>
+            )}
             <TextArea
               rows='12'
               id='paragrphText'
-              {...register('paragraphText')}
+              {...register('paragraphText', {
+                required: 'Please write a paragraph',
+              })}
             />
           </Column>
         </FormRow>

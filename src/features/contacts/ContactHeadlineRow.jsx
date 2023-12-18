@@ -1,45 +1,37 @@
-import styled from 'styled-components';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
-
-const TableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: right;
-`;
+import FormRow from '../../ui/FormRow';
+import Form from '../../ui/Form';
+import Label from '../../ui/Label';
+import ButtonsContainer from '../../ui/ButtonsContainer';
 
 function ContactHeadlineRow({ contactHeadline }) {
   const { headline } = contactHeadline;
 
   return (
-    <TableRow role='vertical'>
+    <Form role='vertical'>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='headline'>
             Contact headline
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={headline} />
+            <Input defaultValue={headline} id='headline' />
           </Column>
-        </Row>
+        </FormRow>
 
         <Row role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>
-            <Button $variation='secondary'>Undo</Button>
+            <Button $variation='secondary' type='reset'>
+              Undo
+            </Button>
             <Button $variation='primary'>Save</Button>
           </ButtonsContainer>
         </Row>
       </Row>
-    </TableRow>
+    </Form>
   );
 }
 

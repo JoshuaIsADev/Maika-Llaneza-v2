@@ -44,6 +44,7 @@ const variations = {
     border: 1px solid var(--color-grey-900);
     background-color: var(--color-grey-900);
     width: 100%;
+    margin-bottom: 3rem;
 
     &:hover {
       color: var(--color-grey-900);

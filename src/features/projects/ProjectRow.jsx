@@ -1,24 +1,14 @@
-import styled from 'styled-components';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteProject } from '../../services/apiProjects';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
 import Input from '../../ui/Input';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteProject } from '../../services/apiProjects';
 import toast from 'react-hot-toast';
-
-const TableRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: right;
-`;
+import Form from '../../ui/Form';
+import FormRow from '../../ui/FormRow';
+import ButtonsContainer from '../../ui/ButtonsContainer';
+import Label from '../../ui/Label';
 
 function ProjectRow({ project }) {
   const { id: projectId, title, publisher, date, url } = project;
@@ -37,59 +27,62 @@ function ProjectRow({ project }) {
   });
 
   return (
-    <TableRow role='vertical'>
+    <Form role='vertical'>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='title'>
             Project title
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={title} />
+            <Input defaultValue={title} id='title' />
           </Column>
-        </Row>
+        </FormRow>
 
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='title'>
             Publisher
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={publisher} />
+            <Input defaultValue={publisher} id='publisher' />
           </Column>
-        </Row>
+        </FormRow>
 
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='date'>
             Published date
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={date} />
+            <Input defaultValue={date} id='date' />
           </Column>
-        </Row>
+        </FormRow>
 
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
+        <FormRow role='row' type='horizontal'>
+          <Label type='info' htmlFor='url'>
             URL
-          </Column>
+          </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={url} />
+            <Input defaultValue={url} id='url' />
           </Column>
-        </Row>
+        </FormRow>
       </Row>
 
-      <Row role='row' type='horizontal' $variation='buttons'>
+      <FormRow role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
           <Button
             onClick={() => mutate(projectId)}
             disabled={isDeleting}
             $variation='danger'
+            type='button'
           >
             Delete
           </Button>
-          <Button $variation='secondary'>Undo</Button>
+          <Button $variation='secondary' type='reset'>
+            Undo
+          </Button>
           <Button $variation='primary'>Save</Button>
         </ButtonsContainer>
-      </Row>
-    </TableRow>
+      </FormRow>
+    </Form>
   );
 }
 
