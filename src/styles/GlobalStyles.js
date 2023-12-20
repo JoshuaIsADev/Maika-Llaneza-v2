@@ -73,7 +73,8 @@ li {
 } */
 
 input,
-textarea {
+textarea,
+::file-selector-button {
   font-family: 'Noto Serif', serif;
   font-size: 1.4rem;
 }

@@ -1,4 +1,5 @@
-import { deleteContact, updateContact } from '../../services/apiContacts';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteContact } from '../../services/apiContacts';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
@@ -8,7 +9,6 @@ import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import { useForm } from 'react-hook-form';
-import useContactMutation from '../../services/useMutation';
 // import { useForm } from 'react-hook-form';
 
 function ContactRow({ contact }) {
@@ -18,34 +18,22 @@ function ContactRow({ contact }) {
     defaultValues: editValues,
   });
 
-  // const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
-  const contactsQueryKey = ['contacts'];
-
-  const deleteMutation = useContactMutation(
-    (id) => deleteContact(id),
-    () => {
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: (id) => deleteContact(id),
+    onSuccess: () => {
       toast.success('Contact deleted');
+      queryClient.invalidateQueries({
+        queryKey: ['contacts'],
+      });
       reset();
     },
-    contactsQueryKey
-  );
-
-  const updateMutation = useContactMutation(
-    ({ ...data }) => updateContact({ ...data }),
-    // console.log(contactId),
-    () => {
-      toast.success('Contact updated');
-    },
-    contactsQueryKey
-  );
-
-  function onDelete(data) {
-    deleteMutation.mutate(contactId, name, url);
-  }
+    onError: (err) => toast.error(err.message),
+  });
 
   function onSubmit(data) {
-    updateMutation.mutate({ contactId, ...data });
+    mutate({ id: contactId, ...data });
   }
 
   function onError(errors) {
@@ -89,8 +77,8 @@ function ContactRow({ contact }) {
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
           <Button
-            onClick={onDelete}
-            disabled={deleteMutation.isLoading}
+            onClick={() => mutate(contactId)}
+            disabled={isDeleting}
             $variation='danger'
             type='button'
           >

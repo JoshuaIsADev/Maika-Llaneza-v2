@@ -11,22 +11,6 @@ export async function getContacts() {
   return data;
 }
 
-export async function updateContact(data) {
-  const { contactId: id, name, url } = data;
-  console.log({ ...data });
-
-  const { data: updatedData, error } = await supabase
-    .from('contacts')
-    .update({ name, url })
-    .eq('id', id)
-    .single();
-
-  if (error) {
-    console.log(error);
-    throw new Error('Contact could not be updated');
-  }
-}
-
 export async function createContact(newContact) {
   const { data, error } = await supabase
     .from('contacts')
