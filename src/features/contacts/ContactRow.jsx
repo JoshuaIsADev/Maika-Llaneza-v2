@@ -8,8 +8,7 @@ import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import { useForm } from 'react-hook-form';
-import useContactMutation from '../../services/useMutation';
-// import { useForm } from 'react-hook-form';
+import MutationFunction from '../../services/MutationFunction';
 
 function ContactRow({ contact }) {
   const { id: contactId, name, url, ...editValues } = contact;
@@ -18,11 +17,9 @@ function ContactRow({ contact }) {
     defaultValues: editValues,
   });
 
-  // const queryClient = useQueryClient();
-
   const contactsQueryKey = ['contacts'];
 
-  const deleteMutation = useContactMutation(
+  const deleteMutation = MutationFunction(
     (id) => deleteContact(id),
     () => {
       toast.success('Contact deleted');
@@ -31,7 +28,7 @@ function ContactRow({ contact }) {
     contactsQueryKey
   );
 
-  const updateMutation = useContactMutation(
+  const updateMutation = MutationFunction(
     ({ ...data }) => updateContact({ ...data }),
     // console.log(contactId),
     () => {

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-const useContactMutation = (mutationFn, onSuccessCallback, queryKey) => {
+const MutationFunction = (mutationFn, onSuccessCallback, queryKey) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -16,4 +16,4 @@ const useContactMutation = (mutationFn, onSuccessCallback, queryKey) => {
   return mutation;
 };
 
-export default useContactMutation;
+export default MutationFunction;
