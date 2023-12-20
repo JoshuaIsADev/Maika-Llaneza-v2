@@ -21,7 +21,7 @@ function ProjectRow({ project }) {
     (id) => deleteProject(id),
     () => {
       toast.success('Project deleted');
-      reset();
+      // reset();
     },
     projectsQueryKey
   );
@@ -31,13 +31,13 @@ function ProjectRow({ project }) {
     // console.log(contactId),
     () => {
       toast.success('Project updated');
-      reset();
+      // reset();
     },
     projectsQueryKey
   );
 
   function onDelete(data) {
-    deleteMutation.mutate({ projectId, ...data });
+    deleteMutation.mutate(projectId);
   }
 
   function onSubmit(data) {

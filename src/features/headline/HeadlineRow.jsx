@@ -26,7 +26,7 @@ function HeadlineRow({ headline }) {
     // console.log(contactId),
     () => {
       toast.success('Headline updated');
-      reset();
+      // reset();
     }
     // headlineQueryKey
   );

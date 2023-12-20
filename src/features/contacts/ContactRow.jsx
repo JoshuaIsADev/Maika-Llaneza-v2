@@ -21,7 +21,7 @@ function ContactRow({ contact }) {
     (id) => deleteContact(id),
     () => {
       toast.success('Contact deleted');
-      reset();
+      // reset();
     },
     contactsQueryKey
   );

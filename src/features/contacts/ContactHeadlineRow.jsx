@@ -22,7 +22,7 @@ function ContactHeadlineRow({ contactHeadline }) {
     // console.log(contactId),
     () => {
       toast.success('Contact headline updated');
-      reset();
+      // reset();
     },
     contactHeadlineQueryKey
   );

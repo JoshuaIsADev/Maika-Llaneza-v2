@@ -23,7 +23,7 @@ function ParagraphRow({ paragraph }) {
     // console.log(paragraphId),
     () => {
       toast.success('Paragraph updated');
-      reset();
+      // reset();
     },
     paragraphsQueryKey
   );

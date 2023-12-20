@@ -10,28 +10,43 @@ import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 
 import Row from '../../ui/Row';
+import MutationFunction from '../../services/MutationFunction';
 
 function CreateProjectForm() {
+  // const { id: projectId, title, publisher, date, url } = project;
+
   const { register, handleSubmit, reset, formState } = useForm();
+
+  const projectsQueryKey = ['projects'];
 
   const { errors } = formState;
 
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: (newProject) => createProject(newProject),
-    onSuccess: () => {
+  const createMutation = MutationFunction(
+    (newProject) => createProject(newProject),
+    // console.log(contactId),
+    () => {
       toast.success('New project created');
-      queryClient.invalidateQueries({
-        queryKey: ['projects'],
-      });
       reset();
     },
-    onError: (err) => toast.error(err.message),
-  });
+    projectsQueryKey
+  );
+
+  // const { mutate, isLoading: isCreating } = useMutation({
+  //   mutationFn: (newProject) => createProject(newProject),
+  //   onSuccess: () => {
+  //     toast.success('New project created');
+  //     queryClient.invalidateQueries({
+  //       queryKey: ['projects'],
+  //     });
+  //     reset();
+  //   },
+  //   onError: (err) => toast.error(err.message),
+  // });
 
   function onSubmit(data) {
-    mutate(data);
+    createMutation.mutate(data);
   }
 
   function onError(errors) {
@@ -44,7 +59,7 @@ function CreateProjectForm() {
         <FormRow label='Project title' error={errors?.title?.message}>
           <Input
             id='title'
-            disabled={isCreating}
+            // disabled={isCreating}
             {...register('title', {
               required: 'Please enter the name of the project',
             })}
@@ -54,7 +69,7 @@ function CreateProjectForm() {
         <FormRow label='Publisher' error={errors?.publisher?.message}>
           <Input
             id='publisher'
-            disabled={isCreating}
+            // disabled={isCreating}
             {...register('publisher', {
               required: 'Please enter the publisher',
             })}
@@ -65,7 +80,7 @@ function CreateProjectForm() {
           <Input
             type='date'
             id='date'
-            disabled={isCreating}
+            // disabled={isCreating}
             {...register('date', {
               required:
                 'Please add the date this project was published or finished',
@@ -74,16 +89,28 @@ function CreateProjectForm() {
         </FormRow>
 
         <FormRow label='URL'>
-          <Input id='url' disabled={isCreating} {...register('url')} />
+          <Input
+            id='url'
+            // disabled={isCreating}
+            {...register('url')}
+          />
         </FormRow>
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
-          <Button $variation='secondary' type='reset' disabled={isCreating}>
+          <Button
+            $variation='secondary'
+            type='reset'
+            // disabled={isCreating}
+          >
             Cancel
           </Button>
-          <Button $variation='primary' type='submit' disabled={isCreating}>
+          <Button
+            $variation='primary'
+            type='submit'
+            // disabled={isCreating}
+          >
             Create
           </Button>
         </ButtonsContainer>
