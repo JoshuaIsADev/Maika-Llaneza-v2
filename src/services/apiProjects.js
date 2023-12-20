@@ -23,6 +23,22 @@ export async function createProject(newProject) {
   }
 }
 
+export async function updateProject(data) {
+  const { projectId: id, title, publisher, date, url } = data;
+  console.log({ ...data });
+
+  const { data: updatedData, error } = await supabase
+    .from('projects')
+    .update({ title, publisher, date, url })
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.log(error);
+    throw new Error('Project could not be updated');
+  }
+}
+
 export async function deleteProject(id) {
   const { data, error } = await supabase.from('projects').delete().eq('id', id);
 

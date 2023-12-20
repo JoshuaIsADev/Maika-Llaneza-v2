@@ -7,6 +7,9 @@ import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import FileInput from '../../ui/FileInput';
 import { useForm } from 'react-hook-form';
+import { updateHeadline } from '../../services/apiHeadline';
+import MutationFunction from '../../services/MutationFunction';
+import toast from 'react-hot-toast';
 
 const Img = styled.img`
   object-fit: contain;
@@ -14,12 +17,22 @@ const Img = styled.img`
 `;
 
 function HeadlineRow({ headline }) {
-  const { register, handleSubmit } = useForm();
+  const { id: headlineId, headlineText, subHeadline, image } = headline;
 
-  const { headlineText, subHeadline, image } = headline;
+  const { register, handleSubmit, reset } = useForm();
+
+  const updateMutation = MutationFunction(
+    ({ ...data }) => updateHeadline({ ...data }),
+    // console.log(contactId),
+    () => {
+      toast.success('Headline updated');
+      reset();
+    }
+    // headlineQueryKey
+  );
 
   function onSubmit(data) {
-    // mutate(data);
+    updateMutation.mutate({ headlineId, ...data });
   }
 
   function onError(errors) {
@@ -34,7 +47,13 @@ function HeadlineRow({ headline }) {
             Headline
           </Column>
           <Column type='input' role='col'>
-            <Input defaultValue={headlineText} />
+            <Input
+              defaultValue={headlineText}
+              id='headlineText'
+              {...register('headlineText', {
+                required: 'Please a headline',
+              })}
+            />
           </Column>
         </Row>
 
@@ -43,14 +62,24 @@ function HeadlineRow({ headline }) {
             Sub headline
           </Column>
           <Column type='input' role='col'>
-            <Input defaultValue={subHeadline} />
+            <Input
+              defaultValue={subHeadline}
+              id='subHeadline'
+              {...register('subHeadline', {
+                required: 'Please a sub headline',
+              })}
+            />
           </Column>
         </Row>
 
         <Row role='row' type='horizontal' $variation='buttons'>
           <ButtonsContainer>
-            <Button $variation='secondary'>Undo</Button>
-            <Button $variation='primary'>Save</Button>
+            <Button $variation='secondary' type='reset'>
+              Undo
+            </Button>
+            <Button $variation='primary' type='submit'>
+              Save
+            </Button>
           </ButtonsContainer>
         </Row>
 
@@ -73,12 +102,8 @@ function HeadlineRow({ headline }) {
                 required: false,
               })}
             />
-            <Button type='reset' $variation='secondary'>
-              Cancel
-            </Button>
-            <Button type='submit' $variation='primary'>
-              Save
-            </Button>
+            <Button $variation='secondary'>Cancel</Button>
+            <Button $variation='primary'>Save</Button>
           </ButtonsContainer>
         </Row>
       </Row>

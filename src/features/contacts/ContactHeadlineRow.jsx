@@ -15,7 +15,7 @@ function ContactHeadlineRow({ contactHeadline }) {
 
   const { register, handleSubmit, reset } = useForm();
 
-  const contactsQueryKey = ['contactHeadline'];
+  const contactHeadlineQueryKey = ['contactHeadline'];
 
   const updateMutation = MutationFunction(
     ({ ...data }) => updateContactHeadline({ ...data }),
@@ -24,7 +24,7 @@ function ContactHeadlineRow({ contactHeadline }) {
       toast.success('Contact headline updated');
       reset();
     },
-    contactsQueryKey
+    contactHeadlineQueryKey
   );
 
   function onSubmit(data) {

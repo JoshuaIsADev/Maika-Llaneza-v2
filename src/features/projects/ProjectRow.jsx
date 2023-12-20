@@ -1,5 +1,5 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteProject } from '../../services/apiProjects';
+import { useForm } from 'react-hook-form';
+import { deleteProject, updateProject } from '../../services/apiProjects';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
 import Column from '../../ui/Column';
@@ -8,32 +8,61 @@ import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import Label from '../../ui/Label';
+import MutationFunction from '../../services/MutationFunction';
 
 function ProjectRow({ project }) {
   const { id: projectId, title, publisher, date, url } = project;
 
-  const queryClient = useQueryClient();
+  const { register, handleSubmit, reset } = useForm();
 
-  const { isLoading: isDeleting, mutate } = useMutation({
-    mutationFn: (id) => deleteProject(id),
-    onSuccess: () => {
+  const projectsQueryKey = ['projects'];
+
+  const deleteMutation = MutationFunction(
+    (id) => deleteProject(id),
+    () => {
       toast.success('Project deleted');
-      queryClient.invalidateQueries({
-        queryKey: ['projects'],
-      });
+      reset();
     },
-    onError: (err) => toast.error(err.message),
-  });
+    projectsQueryKey
+  );
+
+  const updateMutation = MutationFunction(
+    ({ ...data }) => updateProject({ ...data }),
+    // console.log(contactId),
+    () => {
+      toast.success('Project updated');
+      reset();
+    },
+    projectsQueryKey
+  );
+
+  function onDelete(data) {
+    deleteMutation.mutate({ projectId, ...data });
+  }
+
+  function onSubmit(data) {
+    updateMutation.mutate({ projectId, ...data });
+  }
+
+  function onError(errors) {
+    console.log(errors);
+  }
 
   return (
-    <Form role='vertical'>
+    <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
         <Row role='row' type='horizontal'>
           <Label type='info' htmlFor='title'>
             Project title
           </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={title} id='title' />
+            <Input
+              defaultValue={title}
+              id='title'
+              {...register('title', {
+                required: 'Please enter a title',
+              })}
+            />
           </Column>
         </Row>
 
@@ -42,7 +71,13 @@ function ProjectRow({ project }) {
             Publisher
           </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={publisher} id='publisher' />
+            <Input
+              defaultValue={publisher}
+              id='publisher'
+              {...register('publisher', {
+                required: 'Please enter a publisher',
+              })}
+            />
           </Column>
         </Row>
 
@@ -51,7 +86,16 @@ function ProjectRow({ project }) {
             Published date
           </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={date} id='date' />
+            <Input
+              defaultValue={date}
+              type='date'
+              id='date'
+              disabled={updateMutation.isLoading}
+              {...register('date', {
+                required:
+                  'Please add the date this project was published or finished',
+              })}
+            />
           </Column>
         </Row>
 
@@ -60,7 +104,12 @@ function ProjectRow({ project }) {
             URL
           </Label>
           <Column type='input' role='col'>
-            <Input defaultValue={url} id='url' />
+            <Input
+              defaultValue={url}
+              id='url'
+              disabled={updateMutation.isLoading}
+              {...register('url')}
+            />
           </Column>
         </Row>
       </Row>
@@ -68,8 +117,8 @@ function ProjectRow({ project }) {
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
           <Button
-            onClick={() => mutate(projectId)}
-            disabled={isDeleting}
+            onClick={onDelete}
+            disabled={deleteMutation.isLoading}
             $variation='danger'
             type='button'
           >
@@ -78,7 +127,9 @@ function ProjectRow({ project }) {
           <Button $variation='secondary' type='reset'>
             Undo
           </Button>
-          <Button $variation='primary'>Save</Button>
+          <Button $variation='primary' type='submit'>
+            Save
+          </Button>
         </ButtonsContainer>
       </Row>
     </Form>

@@ -10,3 +10,19 @@ export async function getHeadline() {
 
   return data;
 }
+
+export async function updateHeadline(data) {
+  const { headlineId: id, headlineText, subHeadline } = data;
+  console.log({ ...data });
+
+  const { data: updatedData, error } = await supabase
+    .from('headline')
+    .update({ headlineText, subHeadline })
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.log(error);
+    throw new Error('Headline could not be updated');
+  }
+}

@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import { deleteContact, updateContact } from '../../services/apiContacts';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
@@ -7,15 +8,12 @@ import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import { useForm } from 'react-hook-form';
 import MutationFunction from '../../services/MutationFunction';
 
 function ContactRow({ contact }) {
-  const { id: contactId, name, url, ...editValues } = contact;
+  const { id: contactId, name, url } = contact;
 
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: editValues,
-  });
+  const { register, handleSubmit, reset } = useForm();
 
   const contactsQueryKey = ['contacts'];
 
@@ -33,6 +31,7 @@ function ContactRow({ contact }) {
     // console.log(contactId),
     () => {
       toast.success('Contact updated');
+      reset();
     },
     contactsQueryKey
   );
