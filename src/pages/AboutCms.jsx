@@ -5,6 +5,7 @@ import Row from '../ui/Row';
 import Button from '../ui/Button';
 import { useState } from 'react';
 import CreateParagraphForm from '../features/paragraphs/CreateParagraphForm';
+import ProfileImageTable from '../features/profileImage/ProfileImageTable';
 
 function AboutCms() {
   const [showForm, setShowForm] = useState(false);
@@ -13,6 +14,9 @@ function AboutCms() {
     <>
       <Row>
         <HeadlineTable />
+      </Row>
+      <Row>
+        <ProfileImageTable />
       </Row>
       <Row>
         <ParagraphTable />

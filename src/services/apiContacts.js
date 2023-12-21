@@ -13,7 +13,7 @@ export async function getContacts() {
 
 export async function updateContact(data) {
   const { contactId: id, name, url } = data;
-  console.log({ ...data });
+  // console.log({ ...data });
 
   const { data: updatedData, error } = await supabase
     .from('contacts')

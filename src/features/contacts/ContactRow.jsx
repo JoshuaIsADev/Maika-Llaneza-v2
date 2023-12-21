@@ -37,7 +37,7 @@ function ContactRow({ contact }) {
   );
 
   function onDelete(data) {
-    deleteMutation.mutate(contactId, name, url);
+    deleteMutation.mutate(contactId);
   }
 
   function onSubmit(data) {

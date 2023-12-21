@@ -28,7 +28,6 @@ function ProjectRow({ project }) {
 
   const updateMutation = MutationFunction(
     ({ ...data }) => updateProject({ ...data }),
-    // console.log(contactId),
     () => {
       toast.success('Project updated');
       // reset();

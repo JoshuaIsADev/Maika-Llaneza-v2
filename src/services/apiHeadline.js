@@ -12,8 +12,9 @@ export async function getHeadline() {
 }
 
 export async function updateHeadline(data) {
+  //https://icechurbagglqkkmhoss.supabase.co/storage/v1/object/public/about/maika_llaneza.jpg
   const { headlineId: id, headlineText, subHeadline } = data;
-  console.log({ ...data });
+  // console.log({ ...data });
 
   const { data: updatedData, error } = await supabase
     .from('headline')
@@ -25,4 +26,6 @@ export async function updateHeadline(data) {
     console.log(error);
     throw new Error('Headline could not be updated');
   }
+
+  return data;
 }

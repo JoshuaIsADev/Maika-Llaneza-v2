@@ -21,19 +21,26 @@ function HeadlineRow({ headline }) {
 
   const { register, handleSubmit, reset } = useForm();
 
+  const headlineQueryKey = ['headline'];
+
   const updateMutation = MutationFunction(
     ({ ...data }) => updateHeadline({ ...data }),
     // console.log(contactId),
     () => {
       toast.success('Headline updated');
       // reset();
-    }
-    // headlineQueryKey
+    },
+    headlineQueryKey
   );
 
   function onSubmit(data) {
     updateMutation.mutate({ headlineId, ...data });
   }
+
+  // function onSubmitImage(data) {
+  //   updateMutation.mutate({ image: data.image.at[0] });
+  //   console.log(data);
+  // }
 
   function onError(errors) {
     console.log(errors);
@@ -82,32 +89,34 @@ function HeadlineRow({ headline }) {
             </Button>
           </ButtonsContainer>
         </Row>
-
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
-            Image
-          </Column>
-          <Column type='input' role='col'>
-            <Img src={image}></Img>
-          </Column>
-        </Row>
-
-        <Row role='row' type='horizontal' $variation='buttons'>
-          <ButtonsContainer>
-            <FileInput
-              id='image'
-              accept='image/*'
-              type='file'
-              {...register('image', {
-                required: false,
-              })}
-            />
-            <Button $variation='secondary'>Cancel</Button>
-            <Button $variation='primary'>Save</Button>
-          </ButtonsContainer>
-        </Row>
       </Row>
     </Form>
+
+    // <Form>
+    //     <Row role='row' type='horizontal'>
+    //       <Column type='info' role='col'>
+    //         Image
+    //       </Column>
+    //       <Column type='input' role='col'>
+    //         <Img src={image}></Img>
+    //       </Column>
+    //     </Row>
+
+    //     <Row role='row' type='horizontal' $variation='buttons'>
+    //       <ButtonsContainer>
+    //         <FileInput
+    //           id='image'
+    //           accept='image/*'
+    //           {...register('image', {
+    //             required: false,
+    //           })}
+    //         />
+    //         <Button $variation='secondary'>Cancel</Button>
+    //         <Button $variation='primary'>Save</Button>
+    //       </ButtonsContainer>
+    //     </Row>
+    //   </Row>
+    // </Form>
   );
 }
 

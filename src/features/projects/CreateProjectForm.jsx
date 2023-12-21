@@ -1,4 +1,3 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { createProject } from '../../services/apiProjects';
@@ -13,15 +12,11 @@ import Row from '../../ui/Row';
 import MutationFunction from '../../services/MutationFunction';
 
 function CreateProjectForm() {
-  // const { id: projectId, title, publisher, date, url } = project;
-
   const { register, handleSubmit, reset, formState } = useForm();
 
   const projectsQueryKey = ['projects'];
 
   const { errors } = formState;
-
-  const queryClient = useQueryClient();
 
   const createMutation = MutationFunction(
     (newProject) => createProject(newProject),
@@ -32,18 +27,6 @@ function CreateProjectForm() {
     },
     projectsQueryKey
   );
-
-  // const { mutate, isLoading: isCreating } = useMutation({
-  //   mutationFn: (newProject) => createProject(newProject),
-  //   onSuccess: () => {
-  //     toast.success('New project created');
-  //     queryClient.invalidateQueries({
-  //       queryKey: ['projects'],
-  //     });
-  //     reset();
-  //   },
-  //   onError: (err) => toast.error(err.message),
-  // });
 
   function onSubmit(data) {
     createMutation.mutate(data);

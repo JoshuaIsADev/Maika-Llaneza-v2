@@ -1,4 +1,3 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { createContact } from '../../services/apiContacts';
@@ -8,28 +7,28 @@ import Input from '../../ui/Input';
 import FormRow from '../../ui/FormRow';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
+import MutationFunction from '../../services/MutationFunction';
+import { createProject } from '../../services/apiProjects';
 
 function CreateContactForm() {
   const { register, handleSubmit, reset, formState } = useForm();
 
+  const contactsQueryKey = ['contacts'];
+
   const { errors } = formState;
 
-  const queryClient = useQueryClient();
-
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: (newContact) => createContact(newContact),
-    onSuccess: () => {
+  const createMutation = MutationFunction(
+    (newContact) => createContact(newContact),
+    // console.log(contactId),
+    () => {
       toast.success('New contact created');
-      queryClient.invalidateQueries({
-        queryKey: ['contacts'],
-      });
       reset();
     },
-    onError: (err) => toast.error(err.message),
-  });
+    contactsQueryKey
+  );
 
   function onSubmit(data) {
-    mutate(data);
+    createMutation.mutate(data);
   }
 
   function onError(errors) {
@@ -42,7 +41,7 @@ function CreateContactForm() {
         <FormRow label='Contact name' error={errors?.name?.message}>
           <Input
             id='name'
-            disabled={isCreating}
+            disabled={createMutation.isLoading}
             {...register('name', {
               required: 'Please enter a name for the link',
             })}
@@ -57,7 +56,7 @@ function CreateContactForm() {
         >
           <Input
             id='url'
-            disabled={isCreating}
+            disabled={createMutation.isLoading}
             {...register('url', {
               required: 'Please enter the url',
             })}
@@ -67,10 +66,18 @@ function CreateContactForm() {
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>
-          <Button $variation='secondary' type='reset' disabled={isCreating}>
+          <Button
+            $variation='secondary'
+            type='reset'
+            disabled={createMutation.isLoading}
+          >
             Cancel
           </Button>
-          <Button $variation='primary' type='submit' disabled={isCreating}>
+          <Button
+            $variation='primary'
+            type='submit'
+            disabled={createMutation.isLoading}
+          >
             Create
           </Button>
         </ButtonsContainer>
