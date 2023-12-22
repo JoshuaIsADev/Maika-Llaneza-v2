@@ -1,15 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { updateParagraph } from '../../services/apiParagraphs';
+import MutationFunction from '../../hooks/MutationFunction';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
-import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import MutationFunction from '../../services/MutationFunction';
 
 function ParagraphRow({ paragraph }) {
   const { id: paragraphId, title, paragraphText } = paragraph;
@@ -50,40 +49,35 @@ function ParagraphRow({ paragraph }) {
   return (
     <Form type='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='paragraphTitle'>
-            Paragraph title
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={title}
-              id='paragraphTitle'
-              {...register('title', {
-                required: 'Please add a title for the paragraph',
-              })}
-            />
-          </Column>
-        </Row>
+        <Label type='info' htmlFor='paragraphTitle'>
+          Paragraph title
+        </Label>
+        <Input
+          defaultValue={title}
+          id='paragraphTitle'
+          {...register('title', {
+            required: 'Please add a title for the paragraph',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='paragraph'>
-            Paragraph
-          </Label>
-          <Column type='input' role='col'>
-            <TextArea
-              rows='12'
-              defaultValue={paragraphText}
-              id='paragraphText'
-              {...register('paragraphText', {
-                required: 'Please add the paragraph',
-              })}
-            />
-          </Column>
-        </Row>
+      <Row role='row' type='horizontal'>
+        <Label type='info' htmlFor='paragraph'>
+          Paragraph
+        </Label>
+        <TextArea
+          rows='12'
+          defaultValue={paragraphText}
+          id='paragraphText'
+          {...register('paragraphText', {
+            required: 'Please add the paragraph',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal' $variation='buttons'>
-          <ButtonsContainer>
-            {/* <Button
+      <Row role='row' type='horizontal' $variation='buttons'>
+        <ButtonsContainer>
+          {/* <Button
               onClick={() => mutate(paragraphId)}
               disabled={isDeleting}
               $variation='danger'
@@ -91,14 +85,13 @@ function ParagraphRow({ paragraph }) {
             >
               Delete
             </Button> */}
-            <Button $variation='secondary' type='reset'>
-              Undo
-            </Button>
-            <Button $variation='primary' type='submit'>
-              Save
-            </Button>
-          </ButtonsContainer>
-        </Row>
+          <Button $variation='secondary' type='reset'>
+            Undo
+          </Button>
+          <Button $variation='primary' type='submit'>
+            Save
+          </Button>
+        </ButtonsContainer>
       </Row>
     </Form>
   );

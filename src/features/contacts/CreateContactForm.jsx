@@ -7,8 +7,7 @@ import Input from '../../ui/Input';
 import FormRow from '../../ui/FormRow';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import MutationFunction from '../../services/MutationFunction';
-import { createProject } from '../../services/apiProjects';
+import MutationFunction from '../../hooks/MutationFunction';
 
 function CreateContactForm() {
   const { register, handleSubmit, reset, formState } = useForm();

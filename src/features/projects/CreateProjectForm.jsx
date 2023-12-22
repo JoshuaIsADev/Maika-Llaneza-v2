@@ -9,7 +9,7 @@ import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 
 import Row from '../../ui/Row';
-import MutationFunction from '../../services/MutationFunction';
+import MutationFunction from '../../hooks/MutationFunction';
 
 function CreateProjectForm() {
   const { register, handleSubmit, reset, formState } = useForm();

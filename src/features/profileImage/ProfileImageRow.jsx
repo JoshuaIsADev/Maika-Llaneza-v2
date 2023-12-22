@@ -1,19 +1,14 @@
-import styled from 'styled-components';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
-import Column from '../../ui/Column';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import FileInput from '../../ui/FileInput';
 import { useForm } from 'react-hook-form';
-import MutationFunction from '../../services/MutationFunction';
+import MutationFunction from '../../hooks/MutationFunction';
 import toast from 'react-hot-toast';
 import { updateProfileImage } from '../../services/apiProfileImage';
-
-const Img = styled.img`
-  object-fit: contain;
-  width: 100%;
-`;
+import Img from '../../ui/Img';
+import Label from '../../ui/Label';
 
 function ProfileImageRow(profileImage) {
   const { id: profileImageId, image } = profileImage;
@@ -45,12 +40,12 @@ function ProfileImageRow(profileImage) {
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <Column type='info' role='col'>
+        <Label type='info' htmlFor='image'>
           Image
-        </Column>
-        <Column type='input' role='col'>
+        </Label>
+        <Row role='row' type='horizontal' $variation='image'>
           <Img src={image}></Img>
-        </Column>
+        </Row>
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>
@@ -62,10 +57,12 @@ function ProfileImageRow(profileImage) {
               required: false,
             })}
           />
-          <Button $variation='secondary' type='reset'>
-            Cancel
-          </Button>
-          <Button $variation='primary'>Save</Button>
+          <ButtonsContainer>
+            <Button $variation='secondary' type='reset'>
+              Cancel
+            </Button>
+            <Button $variation='primary'>Save</Button>
+          </ButtonsContainer>
         </ButtonsContainer>
       </Row>
     </Form>

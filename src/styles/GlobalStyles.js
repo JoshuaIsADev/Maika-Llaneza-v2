@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
   --color-grey-800: #161616;
   --color-grey-900: #000000;
   
-  --color-danger: #D13200;
+  --color-danger: #E9B195;
 
   --backdrop-color: rgba(255, 255, 255, 1);
 
@@ -58,6 +58,13 @@ p {
   font-family: 'Noto Serif', serif
 }
 
+h4 {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--color-grey-300);
+  padding-bottom: .3rem;
+}
+
 a,
 li {
   text-decoration: none;
@@ -76,7 +83,15 @@ input,
 textarea,
 ::file-selector-button {
   font-family: 'Noto Serif', serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    border-bottom: 1px solid var(--color-grey-900);;
 }
 
 button {

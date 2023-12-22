@@ -34,29 +34,38 @@ function MainNav() {
       <GlobalStyles />
       <NavList>
         <li>
+          <a href='#'>About</a>
+        </li>
+        <li>
+          <a href='#'>Writings</a>
+        </li>
+        <li>
+          <a href='#'>Contact</a>
+        </li>
+        {/* <li>
           <StyledNavLink to='/about'>about</StyledNavLink>
         </li>
         <li>
           <StyledNavLink to='/writings'>writings</StyledNavLink>
         </li>
-        {/* <li>
-          <StyledNavLink to='/blog'>blog</StyledNavLink>
-        </li> */}
         <li>
-          <StyledNavLink to='/contact'>contact</StyledNavLink>
+          <StyledNavLink to='/blog'>blog</StyledNavLink>
         </li>
         <li>
+          <StyledNavLink to='/contact'>contact</StyledNavLink>
+        </li> */}
+        {/* <li>
           <StyledNavLink to='/aboutcms'>about cms</StyledNavLink>
         </li>
         <li>
           <StyledNavLink to='/projectscms'>projects cms</StyledNavLink>
         </li>
-        {/* <li>
+        <li>
           <StyledNavLink to='/blogcms'>blog cms</StyledNavLink>
-        </li> */}
+        </li>
         <li>
           <StyledNavLink to='/contactscms'>contact cms</StyledNavLink>
-        </li>
+        </li> */}
       </NavList>
     </nav>
   );

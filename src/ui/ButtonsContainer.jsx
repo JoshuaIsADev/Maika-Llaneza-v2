@@ -5,6 +5,11 @@ const ButtonsContainer = styled.div`
   flex-direction: row;
   gap: 0.5rem;
   justify-content: right;
+  flex-wrap: wrap;
+
+  /* @media (max-width: 550px) {
+    flex-direction: column;
+  } */
 `;
 
 export default ButtonsContainer;

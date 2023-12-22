@@ -5,6 +5,8 @@ import HeaderCms from './HeaderCms';
 const Main = styled.main`
   background-color: var(--color-grey-0);
   padding: 2rem;
+  max-width: var(--container-width);
+  margin: auto;
 `;
 
 function AppLayoutCms() {

@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   background-color: var(--color-grey-0);
   padding: 2rem;
-  max-width: 800px;
+  max-width: var(--container-width);
   margin: auto;
 `;
 
@@ -19,7 +19,7 @@ const H1 = styled.h1`
 function HeaderCms() {
   return (
     <StyledHeader>
-      <H1 as='h2'>maikallaneza.com | content manager</H1>
+      <H1 as='h2'>maikallaneza.com | cms</H1>
       <MainNavCms />
     </StyledHeader>
   );

@@ -27,7 +27,7 @@ const variations = {
   `,
 
   danger: css`
-    color: var(--color-grey-0);
+    color: var(--color-grey-900);
     border: 1px solid var(--color-danger);
     background-color: var(--color-danger);
     width: fit-content;
@@ -57,7 +57,7 @@ const variations = {
 const Button = styled.button`
   font-size: 1.4rem;
   font-weight: 400;
-  border-radius: none;
+  border-radius: 2rem;
   height: fit-content;
   padding: 0.5rem 2.5rem;
   ${(props) => variations[props.$variation]}

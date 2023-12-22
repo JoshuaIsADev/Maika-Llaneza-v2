@@ -34,13 +34,13 @@ function MainNavCms() {
       <GlobalStyles />
       <NavList>
         <li>
-          <StyledNavLink to='/aboutcms'>about cms</StyledNavLink>
+          <StyledNavLink to='/aboutcms'>about</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/writingscms'>writings cms</StyledNavLink>
+          <StyledNavLink to='/projectscms'>projects</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/contactscms'>contact cms</StyledNavLink>
+          <StyledNavLink to='/contactscms'>contact</StyledNavLink>
         </li>
       </NavList>
     </nav>

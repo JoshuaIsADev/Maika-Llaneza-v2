@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 const Label = styled.div`
   display: flex;
+  margin-bottom: 0.5rem;
 
   ${(props) =>
     props.type === 'info' &&

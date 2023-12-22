@@ -1,6 +1,5 @@
 // import styled, { css } from 'styled-components';
 import Label from './Label';
-import Column from './Column';
 import Error from './Error';
 import Row from './Row';
 
@@ -12,10 +11,9 @@ function FormRow({ label, error, children }) {
           {label}
         </Label>
       )}
-      <Column type='input' role='col'>
-        {error && <Error>{error}</Error>}
-        {children}
-      </Column>
+
+      {error && <Error>{error}</Error>}
+      {children}
     </Row>
   );
 }

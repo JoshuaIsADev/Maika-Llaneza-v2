@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import Label from '../../ui/Label';
-import MutationFunction from '../../services/MutationFunction';
+import MutationFunction from '../../hooks/MutationFunction';
 
 function ProjectRow({ project }) {
   const { id: projectId, title, publisher, date, url } = project;
@@ -50,67 +50,57 @@ function ProjectRow({ project }) {
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='title'>
-            Project title
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={title}
-              id='title'
-              {...register('title', {
-                required: 'Please enter a title',
-              })}
-            />
-          </Column>
-        </Row>
+        <Label type='info' htmlFor='title'>
+          Project title
+        </Label>
+        <Input
+          defaultValue={title}
+          id='title'
+          {...register('title', {
+            required: 'Please enter a title',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='title'>
-            Publisher
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={publisher}
-              id='publisher'
-              {...register('publisher', {
-                required: 'Please enter a publisher',
-              })}
-            />
-          </Column>
-        </Row>
+      <Row role='row' type='horizontal'>
+        <Label type='info' htmlFor='title'>
+          Publisher
+        </Label>
+        <Input
+          defaultValue={publisher}
+          id='publisher'
+          {...register('publisher', {
+            required: 'Please enter a publisher',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='date'>
-            Published date
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={date}
-              type='date'
-              id='date'
-              disabled={updateMutation.isLoading}
-              {...register('date', {
-                required:
-                  'Please add the date this project was published or finished',
-              })}
-            />
-          </Column>
-        </Row>
+      <Row role='row' type='horizontal'>
+        <Label type='info' htmlFor='date'>
+          Published date
+        </Label>
+        <Input
+          defaultValue={date}
+          type='date'
+          id='date'
+          disabled={updateMutation.isLoading}
+          {...register('date', {
+            required:
+              'Please add the date this project was published or finished',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='url'>
-            URL
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={url}
-              id='url'
-              disabled={updateMutation.isLoading}
-              {...register('url')}
-            />
-          </Column>
-        </Row>
+      <Row role='row' type='horizontal'>
+        <Label type='info' htmlFor='url'>
+          URL
+        </Label>
+        <Input
+          defaultValue={url}
+          id='url'
+          disabled={updateMutation.isLoading}
+          {...register('url')}
+        />
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>

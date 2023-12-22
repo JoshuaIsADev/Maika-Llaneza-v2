@@ -3,7 +3,12 @@ import styled, { css } from 'styled-components';
 const variations = {
   buttons: css`
     justify-content: right;
-    padding-bottom: 3rem;
+    padding-bottom: 6rem;
+  `,
+
+  image: css`
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   `,
 };
 
@@ -15,7 +20,6 @@ const Row = styled.div`
     css`
       flex-direction: row;
       align-items: center;
-      padding-bottom: 1rem;
       flex-wrap: wrap;
       width: 100%;
       ${(props) => variations[props.$variation]}

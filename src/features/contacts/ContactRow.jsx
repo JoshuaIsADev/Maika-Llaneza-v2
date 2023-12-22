@@ -2,13 +2,12 @@ import { useForm } from 'react-hook-form';
 import { deleteContact, updateContact } from '../../services/apiContacts';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
-import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import MutationFunction from '../../services/MutationFunction';
+import MutationFunction from '../../hooks/MutationFunction';
 
 function ContactRow({ contact }) {
   const { id: contactId, name, url } = contact;
@@ -51,35 +50,29 @@ function ContactRow({ contact }) {
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='name'>
-            Contact name
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={name}
-              id='name'
-              {...register('name', {
-                required: 'Please enter a name for the link',
-              })}
-            />
-          </Column>
-        </Row>
+        <Label type='info' htmlFor='name'>
+          Contact name
+        </Label>
+        <Input
+          defaultValue={name}
+          id='name'
+          {...register('name', {
+            required: 'Please enter a name for the link',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal'>
-          <Label type='info' htmlFor='url'>
-            URL
-          </Label>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={url}
-              id='url'
-              {...register('url', {
-                required: 'Please enter the url',
-              })}
-            />
-          </Column>
-        </Row>
+      <Row role='row' type='horizontal'>
+        <Label type='info' htmlFor='url'>
+          URL
+        </Label>
+        <Input
+          defaultValue={url}
+          id='url'
+          {...register('url', {
+            required: 'Please enter the url',
+          })}
+        />
       </Row>
 
       <Row role='row' type='horizontal' $variation='buttons'>

@@ -1,20 +1,13 @@
-import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
-import Column from '../../ui/Column';
 import Input from '../../ui/Input';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import FileInput from '../../ui/FileInput';
-import { useForm } from 'react-hook-form';
 import { updateHeadline } from '../../services/apiHeadline';
-import MutationFunction from '../../services/MutationFunction';
-import toast from 'react-hot-toast';
-
-const Img = styled.img`
-  object-fit: contain;
-  width: 100%;
-`;
+import MutationFunction from '../../hooks/MutationFunction';
+import Label from '../../ui/Label';
 
 function HeadlineRow({ headline }) {
   const { id: headlineId, headlineText, subHeadline, image } = headline;
@@ -49,74 +42,42 @@ function HeadlineRow({ headline }) {
   return (
     <Form type='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
       <Row role='row' type='horizontal'>
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
-            Headline
-          </Column>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={headlineText}
-              id='headlineText'
-              {...register('headlineText', {
-                required: 'Please a headline',
-              })}
-            />
-          </Column>
-        </Row>
+        <Label type='info' htmlFor='headlineText'>
+          Headline
+        </Label>
+        <Input
+          defaultValue={headlineText}
+          id='headlineText'
+          {...register('headlineText', {
+            required: 'Please a headline',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal'>
-          <Column type='info' role='col'>
-            Sub headline
-          </Column>
-          <Column type='input' role='col'>
-            <Input
-              defaultValue={subHeadline}
-              id='subHeadline'
-              {...register('subHeadline', {
-                required: 'Please a sub headline',
-              })}
-            />
-          </Column>
-        </Row>
+      <Row role='row' type='horizontal'>
+        <Label type='info' htmlFor='subHeadline'>
+          Sub headline
+        </Label>
+        <Input
+          defaultValue={subHeadline}
+          id='subHeadline'
+          {...register('subHeadline', {
+            required: 'Please a sub headline',
+          })}
+        />
+      </Row>
 
-        <Row role='row' type='horizontal' $variation='buttons'>
-          <ButtonsContainer>
-            <Button $variation='secondary' type='reset'>
-              Undo
-            </Button>
-            <Button $variation='primary' type='submit'>
-              Save
-            </Button>
-          </ButtonsContainer>
-        </Row>
+      <Row role='row' type='horizontal' $variation='buttons'>
+        <ButtonsContainer>
+          <Button $variation='secondary' type='reset'>
+            Undo
+          </Button>
+          <Button $variation='primary' type='submit'>
+            Save
+          </Button>
+        </ButtonsContainer>
       </Row>
     </Form>
-
-    // <Form>
-    //     <Row role='row' type='horizontal'>
-    //       <Column type='info' role='col'>
-    //         Image
-    //       </Column>
-    //       <Column type='input' role='col'>
-    //         <Img src={image}></Img>
-    //       </Column>
-    //     </Row>
-
-    //     <Row role='row' type='horizontal' $variation='buttons'>
-    //       <ButtonsContainer>
-    //         <FileInput
-    //           id='image'
-    //           accept='image/*'
-    //           {...register('image', {
-    //             required: false,
-    //           })}
-    //         />
-    //         <Button $variation='secondary'>Cancel</Button>
-    //         <Button $variation='primary'>Save</Button>
-    //       </ButtonsContainer>
-    //     </Row>
-    //   </Row>
-    // </Form>
   );
 }
 
