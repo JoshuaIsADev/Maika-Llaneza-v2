@@ -36,32 +36,30 @@ function CreateContactForm() {
 
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
-      <Row role='row' type='horizontal'>
-        <FormRow label='Contact name' error={errors?.name?.message}>
-          <Input
-            id='name'
-            disabled={createMutation.isLoading}
-            {...register('name', {
-              required: 'Please enter a name for the link',
-            })}
-          />
-        </FormRow>
+      <FormRow label='Contact name' error={errors?.name?.message}>
+        <Input
+          id='name'
+          disabled={createMutation.isLoading}
+          {...register('name', {
+            required: 'Please enter a name for the link',
+          })}
+        />
+      </FormRow>
 
-        <FormRow
-          label='URL'
-          error={errors?.url?.message}
-          role='row'
-          type='horizontal'
-        >
-          <Input
-            id='url'
-            disabled={createMutation.isLoading}
-            {...register('url', {
-              required: 'Please enter the url',
-            })}
-          />
-        </FormRow>
-      </Row>
+      <FormRow
+        label='URL'
+        error={errors?.url?.message}
+        role='row'
+        type='horizontal'
+      >
+        <Input
+          id='url'
+          disabled={createMutation.isLoading}
+          {...register('url', {
+            required: 'Please enter the url',
+          })}
+        />
+      </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>

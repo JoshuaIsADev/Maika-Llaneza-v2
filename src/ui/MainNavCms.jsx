@@ -24,7 +24,7 @@ const StyledNavLink = styled(NavLink)`
   &.active:link,
   &.active:visited {
     color: var(--color-grey-300);
-    border-bottom: 2px solid var(--color-grey-100);
+    /* border-bottom: 2px solid var(--color-grey-100); */
   }
 `;
 

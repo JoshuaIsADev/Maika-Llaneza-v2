@@ -8,6 +8,7 @@ import ButtonsContainer from '../../ui/ButtonsContainer';
 import { updateHeadline } from '../../services/apiHeadline';
 import MutationFunction from '../../hooks/MutationFunction';
 import Label from '../../ui/Label';
+import FormRow from '../../ui/FormRow';
 
 function HeadlineRow({ headline }) {
   const { id: headlineId, headlineText, subHeadline, image } = headline;
@@ -41,10 +42,7 @@ function HeadlineRow({ headline }) {
 
   return (
     <Form type='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='headlineText'>
-          Headline
-        </Label>
+      <FormRow label='Headline'>
         <Input
           defaultValue={headlineText}
           id='headlineText'
@@ -52,12 +50,9 @@ function HeadlineRow({ headline }) {
             required: 'Please a headline',
           })}
         />
-      </Row>
+      </FormRow>
 
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='subHeadline'>
-          Sub headline
-        </Label>
+      <FormRow label='Sub headline'>
         <Input
           defaultValue={subHeadline}
           id='subHeadline'
@@ -65,7 +60,7 @@ function HeadlineRow({ headline }) {
             required: 'Please a sub headline',
           })}
         />
-      </Row>
+      </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>

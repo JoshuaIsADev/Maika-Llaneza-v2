@@ -9,6 +9,7 @@ import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import Label from '../../ui/Label';
 import MutationFunction from '../../hooks/MutationFunction';
+import FormRow from '../../ui/FormRow';
 
 function ProjectRow({ project }) {
   const { id: projectId, title, publisher, date, url } = project;
@@ -49,10 +50,7 @@ function ProjectRow({ project }) {
 
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='title'>
-          Project title
-        </Label>
+      <FormRow label='Project title'>
         <Input
           defaultValue={title}
           id='title'
@@ -60,12 +58,9 @@ function ProjectRow({ project }) {
             required: 'Please enter a title',
           })}
         />
-      </Row>
+      </FormRow>
 
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='title'>
-          Publisher
-        </Label>
+      <FormRow label='Publisher'>
         <Input
           defaultValue={publisher}
           id='publisher'
@@ -73,12 +68,9 @@ function ProjectRow({ project }) {
             required: 'Please enter a publisher',
           })}
         />
-      </Row>
+      </FormRow>
 
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='date'>
-          Published date
-        </Label>
+      <FormRow label='Published date'>
         <Input
           defaultValue={date}
           type='date'
@@ -89,19 +81,16 @@ function ProjectRow({ project }) {
               'Please add the date this project was published or finished',
           })}
         />
-      </Row>
+      </FormRow>
 
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='url'>
-          URL
-        </Label>
+      <FormRow label='URL'>
         <Input
           defaultValue={url}
           id='url'
           disabled={updateMutation.isLoading}
           {...register('url')}
         />
-      </Row>
+      </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>

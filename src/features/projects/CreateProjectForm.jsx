@@ -38,47 +38,45 @@ function CreateProjectForm() {
 
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
-      <Row role='row' type='horizontal'>
-        <FormRow label='Project title' error={errors?.title?.message}>
-          <Input
-            id='title'
-            // disabled={isCreating}
-            {...register('title', {
-              required: 'Please enter the name of the project',
-            })}
-          />
-        </FormRow>
+      <FormRow label='Project title' error={errors?.title?.message}>
+        <Input
+          id='title'
+          // disabled={isCreating}
+          {...register('title', {
+            required: 'Please enter the name of the project',
+          })}
+        />
+      </FormRow>
 
-        <FormRow label='Publisher' error={errors?.publisher?.message}>
-          <Input
-            id='publisher'
-            // disabled={isCreating}
-            {...register('publisher', {
-              required: 'Please enter the publisher',
-            })}
-          />
-        </FormRow>
+      <FormRow label='Publisher' error={errors?.publisher?.message}>
+        <Input
+          id='publisher'
+          // disabled={isCreating}
+          {...register('publisher', {
+            required: 'Please enter the publisher',
+          })}
+        />
+      </FormRow>
 
-        <FormRow label='Published date' error={errors?.date?.message}>
-          <Input
-            type='date'
-            id='date'
-            // disabled={isCreating}
-            {...register('date', {
-              required:
-                'Please add the date this project was published or finished',
-            })}
-          />
-        </FormRow>
+      <FormRow label='Published date' error={errors?.date?.message}>
+        <Input
+          type='date'
+          id='date'
+          // disabled={isCreating}
+          {...register('date', {
+            required:
+              'Please add the date this project was published or finished',
+          })}
+        />
+      </FormRow>
 
-        <FormRow label='URL'>
-          <Input
-            id='url'
-            // disabled={isCreating}
-            {...register('url')}
-          />
-        </FormRow>
-      </Row>
+      <FormRow label='URL'>
+        <Input
+          id='url'
+          // disabled={isCreating}
+          {...register('url')}
+        />
+      </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>

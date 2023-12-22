@@ -57,7 +57,7 @@ const variations = {
 const Button = styled.button`
   font-size: 1.4rem;
   font-weight: 400;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   height: fit-content;
   padding: 0.5rem 2.5rem;
   ${(props) => variations[props.$variation]}

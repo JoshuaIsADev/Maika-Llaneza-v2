@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
+import FormRow from '../../ui/FormRow';
 
 function ParagraphRow({ paragraph }) {
   const { id: paragraphId, title, paragraphText } = paragraph;
@@ -48,10 +49,7 @@ function ParagraphRow({ paragraph }) {
 
   return (
     <Form type='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='paragraphTitle'>
-          Paragraph title
-        </Label>
+      <FormRow label='Paragraph title'>
         <Input
           defaultValue={title}
           id='paragraphTitle'
@@ -59,12 +57,9 @@ function ParagraphRow({ paragraph }) {
             required: 'Please add a title for the paragraph',
           })}
         />
-      </Row>
+      </FormRow>
 
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='paragraph'>
-          Paragraph
-        </Label>
+      <FormRow label='Paragraph'>
         <TextArea
           rows='12'
           defaultValue={paragraphText}
@@ -73,7 +68,7 @@ function ParagraphRow({ paragraph }) {
             required: 'Please add the paragraph',
           })}
         />
-      </Row>
+      </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>

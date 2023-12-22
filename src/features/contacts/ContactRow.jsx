@@ -5,9 +5,9 @@ import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
-import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import MutationFunction from '../../hooks/MutationFunction';
+import FormRow from '../../ui/FormRow';
 
 function ContactRow({ contact }) {
   const { id: contactId, name, url } = contact;
@@ -49,10 +49,7 @@ function ContactRow({ contact }) {
 
   return (
     <Form role='vertical' onSubmit={handleSubmit(onSubmit, onError)}>
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='name'>
-          Contact name
-        </Label>
+      <FormRow label='Contact name'>
         <Input
           defaultValue={name}
           id='name'
@@ -60,12 +57,9 @@ function ContactRow({ contact }) {
             required: 'Please enter a name for the link',
           })}
         />
-      </Row>
+      </FormRow>
 
-      <Row role='row' type='horizontal'>
-        <Label type='info' htmlFor='url'>
-          URL
-        </Label>
+      <FormRow label='URL'>
         <Input
           defaultValue={url}
           id='url'
@@ -73,7 +67,7 @@ function ContactRow({ contact }) {
             required: 'Please enter the url',
           })}
         />
-      </Row>
+      </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
         <ButtonsContainer>

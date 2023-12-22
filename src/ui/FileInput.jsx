@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const FileInput = styled.input.attrs({ type: 'file' })`
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   font-size: 1.4rem;
