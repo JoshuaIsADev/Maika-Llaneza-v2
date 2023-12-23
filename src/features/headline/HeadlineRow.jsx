@@ -7,7 +7,6 @@ import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import { updateHeadline } from '../../services/apiHeadline';
 import MutationFunction from '../../hooks/MutationFunction';
-import Label from '../../ui/Label';
 import FormRow from '../../ui/FormRow';
 
 function HeadlineRow({ headline }) {

@@ -1,10 +1,14 @@
 import styled from 'styled-components';
-import GlobalStyles from '../styles/GlobalStyles';
+// import GlobalStyles from '../styles/GlobalStyles';
 import { NavLink } from 'react-router-dom';
+import Logout from '../features/authentication/Logout';
 
 const NavList = styled.ul`
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2rem;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -12,9 +16,8 @@ const StyledNavLink = styled(NavLink)`
   &:visited {
     display: flex;
     align-items: center;
-    gap: 1rem;
 
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     color: var(--color-grey-900);
   }
@@ -31,17 +34,18 @@ const StyledNavLink = styled(NavLink)`
 function MainNavCms() {
   return (
     <nav>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       <NavList>
         <li>
-          <StyledNavLink to='/aboutcms'>about</StyledNavLink>
+          <StyledNavLink to='/aboutcms'>About</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/projectscms'>projects</StyledNavLink>
+          <StyledNavLink to='/projectscms'>Projects</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to='/contactscms'>contact</StyledNavLink>
+          <StyledNavLink to='/contactscms'>Contact</StyledNavLink>
         </li>
+        <Logout />
       </NavList>
     </nav>
   );

@@ -10,6 +10,14 @@ const StyledHeader = styled.header`
   padding: 2rem;
   max-width: var(--container-width);
   margin: auto;
+
+  @media screen and (max-width: 480px) {
+    &:link,
+    &:visited {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
 `;
 
 const H1 = styled.h1`
