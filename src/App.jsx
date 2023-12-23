@@ -19,6 +19,7 @@ import ContactsCms from './pages/ContactsCms';
 import ProjectsCms from './pages/ProjectsCms';
 import Cms from './pages/Cms';
 import AppLayoutCms from './ui/AppLayoutCms';
+import ProtectedRoute from './ui/ProtectedRoute';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,7 +43,13 @@ function App() {
             <Route path='writings' element={<Writings />} />
             <Route path='contact' element={<Contact />} />
           </Route>
-          <Route element={<AppLayoutCms />}>
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayoutCms />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate replace to='login' />} />
             {/* <Route path='blog' element={<Blog />} /> */}
             <Route path='cms' element={<Cms />} />
@@ -50,8 +57,8 @@ function App() {
             <Route path='/projectscms' element={<ProjectsCms />} />
             <Route path='/contactscms' element={<ContactsCms />} />
             {/* <Route path='blogcms' element={<BlogCms />} /> */}
-            <Route path='login' element={<Login />} />
           </Route>
+          <Route path='login' element={<Login />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
@@ -61,6 +68,7 @@ function App() {
         gutter={24}
         containerStyle={{ margin: '1rem' }}
         toastOptions={{
+          className: 'toast-message',
           success: {
             duration: 3000,
           },
@@ -68,7 +76,6 @@ function App() {
             duration: 5000,
           },
           style: {
-            fontSize: '2.5rem',
             maxWidth: '400px',
             padding: '1rem',
             backgroundColor: 'var(--color-grey-0)',

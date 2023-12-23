@@ -2,16 +2,28 @@ import { useState } from 'react';
 import Form from '../../ui/Form';
 import Row from '../../ui/Row';
 import Input from '../../ui/Input';
-import ButtonsContainer from '../../ui/ButtonsContainer';
 import Button from '../../ui/Button';
-import Label from '../../ui/Label';
 import FormRow from '../../ui/FormRow';
+import { useLogin } from './useLogin';
 
 function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('llanezamaika@gmail.com');
+  const [password, setPassword] = useState('Parcheesi5');
+  const { login, isLoading } = useLogin();
 
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!email || !password) return;
+    login(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail('');
+          setPassword('');
+        },
+      }
+    );
+  }
 
   return (
     <Form type='vertical' onSubmit={handleSubmit}>
@@ -22,6 +34,7 @@ function LoginForm() {
           autoComplete='username'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
         />
       </FormRow>
 
@@ -32,12 +45,13 @@ function LoginForm() {
           autoComplete='current-password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
       </FormRow>
 
       <Row role='row' type='horizontal' $variation='buttons'>
-        <Button $variation='add' type='submit'>
-          Login
+        <Button $variation='add' type='submit' disabled={isLoading}>
+          {!isLoading ? 'Log in' : 'Signing in...'}
         </Button>
       </Row>
     </Form>
