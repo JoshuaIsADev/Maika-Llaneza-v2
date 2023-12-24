@@ -6,9 +6,22 @@ const variations = {
     padding-bottom: 6rem;
   `,
 
+  profileImage: css`
+    /* padding: 2rem 0; */
+    width: 600px;
+    height: 500px;
+    margin: 3rem auto;
+    transform: translateX(-9.5rem);
+  `,
+
   image: css`
     padding-top: 1rem;
     padding-bottom: 2rem;
+  `,
+
+  center: css`
+    text-align: center;
+    justify-content: center;
   `,
 };
 

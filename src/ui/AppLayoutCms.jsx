@@ -1,21 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 import HeaderCms from './HeaderCms';
-
-const Main = styled.main`
-  background-color: var(--color-grey-0);
-  padding: 2rem;
-  max-width: var(--container-width);
-  margin: auto;
-`;
+import StyledMain from './../ui/StyledMain';
 
 function AppLayoutCms() {
   return (
     <div>
       <HeaderCms />
-      <Main>
+      <StyledMain>
         <Outlet />
-      </Main>
+      </StyledMain>
     </div>
   );
 }

@@ -1,72 +1,19 @@
-import styled from 'styled-components';
-import GlobalStyles from '../styles/GlobalStyles';
-import { NavLink } from 'react-router-dom';
-
-const NavList = styled.ul`
-  display: flex;
-  gap: 1rem;
-`;
-
-const StyledNavLink = styled(NavLink)`
-  &:link,
-  &:visited {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--color-grey-900);
-  }
-
-  &:hover,
-  &:active,
-  &.active:link,
-  &.active:visited {
-    color: var(--color-grey-300);
-    border-bottom: 2px solid var(--color-grey-100);
-  }
-`;
+import { StyledHashLink, StyledNav } from './StyledNav';
 
 function MainNav() {
   return (
     <nav>
-      <GlobalStyles />
-      <NavList>
+      <StyledNav>
         <li>
-          <a href='#'>About</a>
+          <StyledHashLink to='#about'>About</StyledHashLink>
         </li>
         <li>
-          <a href='#'>Writings</a>
+          <StyledHashLink to='#writings'>Writings</StyledHashLink>
         </li>
         <li>
-          <a href='#'>Contact</a>
+          <StyledHashLink to='#contact'>Contact</StyledHashLink>
         </li>
-        {/* <li>
-          <StyledNavLink to='/about'>about</StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to='/writings'>writings</StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to='/blog'>blog</StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to='/contact'>contact</StyledNavLink>
-        </li> */}
-        {/* <li>
-          <StyledNavLink to='/aboutcms'>about cms</StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to='/projectscms'>projects cms</StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to='/blogcms'>blog cms</StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to='/contactscms'>contact cms</StyledNavLink>
-        </li> */}
-      </NavList>
+      </StyledNav>
     </nav>
   );
 }

@@ -22,11 +22,6 @@ function ProfileImageTable() {
     <Table role=''>
       <ProfileImageRow image={profileImage[0].image} key={profileImage[0].id} />
     </Table>
-    // <Table role=''>
-    //   {profileImage.map((image) => (
-    //     <ProfileImageRow image={image} key={image.id} />
-    //   ))}
-    // </Table>
   );
 }
 

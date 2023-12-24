@@ -15,13 +15,14 @@ const GlobalStyles = createGlobalStyle`
   
   --color-danger: #E9B195;
 
-  --backdrop-color: rgba(255, 255, 255, 1);
+  --background-color: #F9F5EF;
 
   --border-radius-sm: .5rem;
   --border-radius-md: 1rem;
   --border-radius-lg: 2rem;
 
-  --container-width: 800px;
+  --container-width: 600px;
+  --container-width-small: 450px;
 }
 
 *,
@@ -37,25 +38,31 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   font-family: 'Noto Serif', serif;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--background-color);
 }
 
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  
 }
 
-h1 {
+h1,
+h2 {
   font-family: 'Noto Serif Display', serif;
 }
 
-h2,
 h3,
 h4,
 h5,
 h6,
 p {
   font-family: 'Noto Serif', serif
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 300;
 }
 
 h4 {
@@ -91,7 +98,7 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
-    border-bottom: 1px solid var(--color-grey-900);;
+    border-bottom: 1px solid var(--color-grey-900);
 }
 
 button {
@@ -99,6 +106,12 @@ button {
   font-family: 'Noto Serif', serif;
   width: 100%;
   
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--color-grey-200);
 }
 
 `;

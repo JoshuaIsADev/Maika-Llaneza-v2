@@ -37,7 +37,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to='' />} />
+            <Route index element={<Navigate replace to='About' />} />
             <Route path='about' element={<About />} />
             <Route path='writings' element={<Writings />} />
             <Route path='contact' element={<Contact />} />
