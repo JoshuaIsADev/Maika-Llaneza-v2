@@ -12,7 +12,7 @@ import FormRow from '../../ui/FormRow';
 function ContactHeadlineRow({ contactHeadline }) {
   const { id: contactHeadlineId, headline } = contactHeadline;
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const contactHeadlineQueryKey = ['contactHeadline'];
 
@@ -21,7 +21,6 @@ function ContactHeadlineRow({ contactHeadline }) {
     // console.log(contactId),
     () => {
       toast.success('Contact headline updated');
-      // reset();
     },
     contactHeadlineQueryKey
   );

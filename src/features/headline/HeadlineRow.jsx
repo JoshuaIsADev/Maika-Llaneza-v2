@@ -10,9 +10,9 @@ import MutationFunction from '../../hooks/MutationFunction';
 import FormRow from '../../ui/FormRow';
 
 function HeadlineRow({ headline }) {
-  const { id: headlineId, headlineText, subHeadline, image } = headline;
+  const { id: headlineId, headlineText, subHeadline } = headline;
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const headlineQueryKey = ['headline'];
 
@@ -21,7 +21,6 @@ function HeadlineRow({ headline }) {
     // console.log(contactId),
     () => {
       toast.success('Headline updated');
-      // reset();
     },
     headlineQueryKey
   );

@@ -19,7 +19,7 @@ function splitParagraph(text) {
   return text ? text.split(seperator) : [];
 }
 
-function About() {
+function Home() {
   const {
     isLoading: isLoadingHeadline,
     data: headline,
@@ -193,4 +193,4 @@ function About() {
   );
 }
 
-export default About;
+export default Home;

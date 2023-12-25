@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 
-import About from './pages/About';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 import GlobalStyles from './styles/GlobalStyles';
@@ -27,14 +27,14 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
 
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to='About' />} />
-            <Route path='about' element={<About />} />
+            <Route index element={<Navigate replace to='home' />} />
+            <Route path='home' element={<Home />} />
           </Route>
           <Route
             element={

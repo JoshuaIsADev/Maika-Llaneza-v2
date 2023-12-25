@@ -14,7 +14,7 @@ import FormRow from '../../ui/FormRow';
 function ProjectRow({ project }) {
   const { id: projectId, title, publisher, date, url } = project;
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const projectsQueryKey = ['projects'];
 
@@ -22,7 +22,6 @@ function ProjectRow({ project }) {
     (id) => deleteProject(id),
     () => {
       toast.success('Project deleted');
-      // reset();
     },
     projectsQueryKey
   );

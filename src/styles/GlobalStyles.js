@@ -33,7 +33,7 @@ const GlobalStyles = createGlobalStyle`
   padding: 0;
   font-size: 10px;
 
-  transition: all 0.1s ease-in-out;
+
 }
 
 body {
@@ -83,14 +83,6 @@ li {
   text-decoration: none;
   list-style: none;
 }
-
-/* h1 {
-  font-size: 11rem;
-  font-weight: 300;
-  line-height: 11rem;
-  letter-spacing: -0.8rem;
-  color: rgba(0, 0, 0, 1);
-} */
 
 input,
 textarea,

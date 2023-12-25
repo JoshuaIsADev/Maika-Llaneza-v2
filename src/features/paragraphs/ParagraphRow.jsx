@@ -7,14 +7,13 @@ import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
 import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
-import Label from '../../ui/Label';
 import ButtonsContainer from '../../ui/ButtonsContainer';
 import FormRow from '../../ui/FormRow';
 
 function ParagraphRow({ paragraph }) {
   const { id: paragraphId, title, paragraphText } = paragraph;
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const paragraphsQueryKey = ['paragraphs'];
 
@@ -23,7 +22,6 @@ function ParagraphRow({ paragraph }) {
     // console.log(paragraphId),
     () => {
       toast.success('Paragraph updated');
-      // reset();
     },
     paragraphsQueryKey
   );
