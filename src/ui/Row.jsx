@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const variations = {
   buttons: css`
     justify-content: right;
-    padding-bottom: 6rem;
+    padding: 1rem 0 8rem;
   `,
 
   profileImage: css`
@@ -12,6 +12,12 @@ const variations = {
     height: 500px;
     margin: 3rem auto;
     transform: translateX(-9.5rem);
+  `,
+  project: css`
+    flex-direction: column;
+    padding: 2rem 0;
+    width: 600px;
+    margin: 0rem auto;
   `,
 
   image: css`
@@ -22,6 +28,7 @@ const variations = {
   center: css`
     text-align: center;
     justify-content: center;
+    gap: 1rem;
   `,
 };
 

@@ -4,12 +4,12 @@ import StyledMain from './../ui/StyledMain';
 
 function AppLayoutCms() {
   return (
-    <div>
+    <>
       <HeaderCms />
-      <StyledMain>
+      <StyledMain $variation='cms'>
         <Outlet />
       </StyledMain>
-    </div>
+    </>
   );
 }
 

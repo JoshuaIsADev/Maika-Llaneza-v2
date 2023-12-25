@@ -1,12 +1,13 @@
 import MainNavCms from './MainNavCms';
 import StyledHeader from './StyledHeader';
 import Container from '../ui/Container';
+import Heading from './Heading';
 
 function HeaderCms() {
   return (
     <StyledHeader>
       <Container $variation='cms'>
-        <h3>Maika Llaneza | CMS</h3>
+        <Heading as='h4'>CMS</Heading>
         <MainNavCms />
       </Container>
     </StyledHeader>

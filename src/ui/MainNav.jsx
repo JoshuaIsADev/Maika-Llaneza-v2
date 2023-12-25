@@ -8,7 +8,7 @@ function MainNav() {
           <StyledHashLink to='#about'>About</StyledHashLink>
         </li>
         <li>
-          <StyledHashLink to='#writings'>Writings</StyledHashLink>
+          <StyledHashLink to='#writer'>Writings</StyledHashLink>
         </li>
         <li>
           <StyledHashLink to='#contact'>Contact</StyledHashLink>

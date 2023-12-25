@@ -4,7 +4,7 @@ import { StyledNav, StyledNavLink } from './StyledNav';
 function MainNavCms() {
   return (
     <nav>
-      <StyledNav>
+      <StyledNav $variation='cms'>
         <li>
           <StyledNavLink to='/aboutcms'>About</StyledNavLink>
         </li>

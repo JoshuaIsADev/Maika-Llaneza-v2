@@ -60,6 +60,12 @@ p {
   font-family: 'Noto Serif', serif
 }
 
+p {
+  font-size: 1.8rem;
+  text-align: left;
+  line-height: 3.6rem;
+}
+
 h3 {
   font-size: 1.8rem;
   font-weight: 300;
@@ -114,6 +120,9 @@ hr {
   border-top: 1px solid var(--color-grey-200);
 }
 
+#about, #writer, #contact {
+  scroll-margin-top: 8rem;
+}
 `;
 
 export default GlobalStyles;

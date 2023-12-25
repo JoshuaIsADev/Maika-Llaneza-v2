@@ -4,9 +4,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 
 import About from './pages/About';
-import Writings from './pages/Writings';
-import Contact from './pages/Contact';
-// import Blog from './pages/Blog';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 import GlobalStyles from './styles/GlobalStyles';
@@ -16,7 +13,6 @@ import AboutCms from './pages/AboutCms';
 import ContactsCms from './pages/ContactsCms';
 // import BlogCms from './pages/BlogCms';
 import ProjectsCms from './pages/ProjectsCms';
-import Cms from './pages/Cms';
 import AppLayoutCms from './ui/AppLayoutCms';
 import ProtectedRoute from './ui/ProtectedRoute';
 
@@ -39,8 +35,6 @@ function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to='About' />} />
             <Route path='about' element={<About />} />
-            <Route path='writings' element={<Writings />} />
-            <Route path='contact' element={<Contact />} />
           </Route>
           <Route
             element={
@@ -51,7 +45,6 @@ function App() {
           >
             <Route index element={<Navigate replace to='login' />} />
             {/* <Route path='blog' element={<Blog />} /> */}
-            <Route path='cms' element={<Cms />} />
             <Route path='/aboutcms' element={<AboutCms />} />
             <Route path='/projectscms' element={<ProjectsCms />} />
             <Route path='/contactscms' element={<ContactsCms />} />
@@ -77,7 +70,7 @@ function App() {
           style: {
             maxWidth: '400px',
             padding: '1rem',
-            backgroundColor: 'var(--color-grey-0)',
+            backgroundColor: 'var(--color-danger)',
             color: 'var(--color-grey-900)',
           },
         }}

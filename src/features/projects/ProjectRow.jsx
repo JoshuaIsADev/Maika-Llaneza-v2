@@ -2,12 +2,12 @@ import { useForm } from 'react-hook-form';
 import { deleteProject, updateProject } from '../../services/apiProjects';
 import Row from '../../ui/Row';
 import Button from '../../ui/Button';
-import Column from '../../ui/Column';
+
 import Input from '../../ui/Input';
 import toast from 'react-hot-toast';
 import Form from '../../ui/Form';
 import ButtonsContainer from '../../ui/ButtonsContainer';
-import Label from '../../ui/Label';
+
 import MutationFunction from '../../hooks/MutationFunction';
 import FormRow from '../../ui/FormRow';
 
