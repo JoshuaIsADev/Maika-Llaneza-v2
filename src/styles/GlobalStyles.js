@@ -39,12 +39,13 @@ const GlobalStyles = createGlobalStyle`
 body {
   font-family: 'Noto Serif', serif;
   background-color: var(--background-color);
+  overflow-x: hidden;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  
+  overflow-x: hidden;
 }
 
 h1,
