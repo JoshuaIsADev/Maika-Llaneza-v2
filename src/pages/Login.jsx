@@ -5,11 +5,13 @@ import Row from '../ui/Row';
 
 const LoginLayout = styled.main`
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 48rem;
+  display: flex;
+  flex-direction: column;
   align-content: center;
   justify-content: center;
   gap: 3.2rem;
+  max-width: var(--container-width-small);
+  padding: 2rem;
 `;
 
 function Login() {
