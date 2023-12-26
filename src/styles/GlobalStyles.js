@@ -113,8 +113,12 @@ hr {
   border-top: 1px solid var(--color-grey-200);
 }
 
-#about, #writer, #contact {
+#about, #writer {
   scroll-margin-top: 8rem;
+}
+
+#contact {
+  scroll-margin-top: 0rem;
 }
 `;
 
