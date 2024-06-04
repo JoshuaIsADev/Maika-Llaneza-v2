@@ -7,7 +7,6 @@ const StyledHeader = styled.header`
   display: grid;
   grid-template-columns: var(--grid-column);
   position: fixed;
-  /* top: 1rem; */
   left: 0;
   width: 100%;
   z-index: 0;

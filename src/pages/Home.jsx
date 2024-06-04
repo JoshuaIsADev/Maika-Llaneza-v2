@@ -11,7 +11,6 @@ import { getContactHeadline } from '../services/apiContactHeadline';
 import { getContacts } from '../services/apiContacts';
 import { StyledNav } from '../ui/StyledNav';
 import styled from 'styled-components';
-import Header from '../ui/Header';
 
 const StyledHome = styled.div`
   display: grid;
@@ -24,6 +23,8 @@ const BgLeft = styled.div`
   height: 100%;
   width: 20vw;
   position: fixed;
+  overflow-y: hidden;
+
   @media (max-width: 700px) {
     width: 10vw;
   }
@@ -39,6 +40,7 @@ const BgRight = styled.div`
   background-position: top;
   width: 30vw;
   position: fixed;
+  overflow-y: hidden;
   @media (max-width: 700px) {
     width: 30vw;
   }

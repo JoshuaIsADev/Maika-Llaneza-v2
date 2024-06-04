@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import StyledMain from './../ui/StyledMain';
-import Monsters from './Monsters';
 
 function AppLayout() {
   return (
@@ -10,7 +9,6 @@ function AppLayout() {
       <StyledMain>
         <Outlet />
       </StyledMain>
-      {/* <Monsters /> */}
     </>
   );
 }
