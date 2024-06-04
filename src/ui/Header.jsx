@@ -50,8 +50,8 @@ function Header() {
   return (
     <StyledHeader>
       <HeaderContainer>
-        <nav>
-          <h1 className='font-m font-special'>{subHeadline}</h1>
+        <h1 className='font-m font-special'>{subHeadline}</h1>
+        <nav aria-label='table of contents'>
           <Ul>
             <li>
               <a

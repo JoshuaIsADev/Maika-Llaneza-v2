@@ -6,7 +6,7 @@ import Monsters from './Monsters';
 function AppLayout() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <StyledMain>
         <Outlet />
       </StyledMain>

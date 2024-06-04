@@ -161,7 +161,7 @@ function Home() {
 
   return (
     <StyledHome>
-      <Header />
+      {/* <Header /> */}
       <section id='hero'>
         <Row $variation='hero'>
           <h2 className='font-l font-special'>{headlineText}</h2>
@@ -195,21 +195,19 @@ function Home() {
 
       <section id='contact'>
         <h2 className='font-l font-special'>{contactHeadlineText}</h2>
-        <nav>
-          <UlContact>
-            {contactDetails.map((contact) => (
-              <li key={contact.contactId}>
-                <a
-                  href={contact.url}
-                  className='font-xs font-special font-special-link'
-                >
-                  {contact.name}
-                </a>
-              </li>
-            ))}
-          </UlContact>
-          <StyledNav></StyledNav>
-        </nav>
+        <UlContact>
+          {contactDetails.map((contact) => (
+            <li key={contact.contactId}>
+              <a
+                href={contact.url}
+                className='font-xs font-special font-special-link'
+              >
+                {contact.name}
+              </a>
+            </li>
+          ))}
+        </UlContact>
+        <StyledNav></StyledNav>
       </section>
       <BgLeft>
         <Img src='/background2.png' $variation='bgLeft' alt='background art1' />
