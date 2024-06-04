@@ -33,7 +33,6 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 16px;
 }
 
 body {
@@ -50,6 +49,7 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   overflow-x: hidden;
+    font-size: 16px;
 }
 
 p {

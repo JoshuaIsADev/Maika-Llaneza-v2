@@ -212,15 +212,11 @@ function Home() {
         </nav>
       </section>
       <BgLeft>
-        <Img
-          src='../../public/background2.png'
-          $variation='bgLeft'
-          alt='background art1'
-        />
+        <Img src='/background2.png' $variation='bgLeft' alt='background art1' />
       </BgLeft>
       <BgRight>
         <Img
-          src='../../public/background3.png'
+          src='/background3.png'
           $variation='bgRight'
           alt='background art2'
         />
