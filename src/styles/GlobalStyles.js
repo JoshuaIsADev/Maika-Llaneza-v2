@@ -25,6 +25,12 @@ const GlobalStyles = createGlobalStyle`
   --container-width-small: 800px;
 
   --grid-column: 20vw 40vw 40vw;
+  @media (max-width: 1600px) {
+    --grid-column: 20vw 50vw 30vw
+    }
+  @media (max-width: 700px) {
+    --grid-column: 10vw 60vw 30vw
+    }
 }
 
 *,
@@ -178,12 +184,66 @@ hr {
   grid-column: 2 / span 1;
   grid-row: 6 / span 1;
   scroll-margin-top: 0rem;
-  /* text-align: center; */
 }
 
 #hero, #about, #writer, #projects, #contact {
   padding-bottom: 6rem;
 }
-`;
 
+@media (max-width: 1200px) {
+  .font-l {
+  font-style: normal;
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+.font-m {
+  font-style: normal;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.font-s {
+  font-style: normal;
+  font-size: 1.5rem;
+}
+
+.font-xs {
+  font-style: normal;
+  font-size: 1rem;
+}
+}
+
+@media (max-width: 700px) {
+  p {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+  .font-l {
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.font-m {
+  font-style: normal;
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+}
+
+.font-s {
+  font-style: normal;
+  font-size: 1.25rem;
+}
+
+.font-xs {
+  font-style: normal;
+  font-size: 1rem;
+}
+}
+
+`;
 export default GlobalStyles;

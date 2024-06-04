@@ -22,15 +22,26 @@ const HeaderContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  @media (max-width: 700px) {
+    gap: 0.5rem;
+  }
 `;
 
 const Ul = styled.ul`
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
   text-align: left;
   height: 5rem;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  /* height: 5rem; */
 `;
 
 function Header() {

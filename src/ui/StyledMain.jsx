@@ -14,8 +14,8 @@ const Main = styled.main`
   margin: 0 auto;
   padding: 0 0 10rem;
 
-  @media (max-width: 550px) {
-    margin: 2rem auto;
+  @media (max-width: 700px) {
+    padding: 0rem;
   }
   ${(props) => variations[props.$variation]};
 `;

@@ -24,6 +24,9 @@ const BgLeft = styled.div`
   height: 100%;
   width: 20vw;
   position: fixed;
+  @media (max-width: 700px) {
+    width: 10vw;
+  }
 `;
 
 const BgRight = styled.div`
@@ -36,11 +39,17 @@ const BgRight = styled.div`
   background-position: top;
   width: 30vw;
   position: fixed;
+  @media (max-width: 700px) {
+    width: 30vw;
+  }
 `;
 
 const ImageContainer = styled.div`
   top: 2rem;
   width: 20rem;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 const UlContact = styled.ul`
@@ -49,6 +58,12 @@ const UlContact = styled.ul`
   gap: 2rem;
   align-items: center;
   height: 5rem;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+  }
 `;
 
 function splitParagraph(text) {
