@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components';
 
 const variations = {
+  hero: css`
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+  `,
+
   buttons: css`
     justify-content: right;
     padding: 1rem 0 8rem;
@@ -8,15 +14,15 @@ const variations = {
 
   profileImage: css`
     /* padding: 2rem 0; */
+    border-radius: 16px;
     width: 600px;
     height: 500px;
     margin: 3rem auto;
-    transform: translateX(-9.5rem);
   `,
+
   project: css`
     flex-direction: column;
-    padding: 2rem 0;
-    width: 600px;
+    /* padding: 2rem 0; */
     margin: 0rem auto;
   `,
 
@@ -28,7 +34,6 @@ const variations = {
   center: css`
     text-align: center;
     justify-content: center;
-    gap: 1rem;
   `,
 };
 

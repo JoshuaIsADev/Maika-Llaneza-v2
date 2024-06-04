@@ -11,9 +11,8 @@ const variations = {
 };
 
 const Main = styled.main`
-  padding: 2rem;
-  max-width: var(--container-width);
-  margin: 6rem auto;
+  margin: 0 auto;
+  padding: 0 0 10rem;
 
   @media (max-width: 550px) {
     margin: 2rem auto;

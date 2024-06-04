@@ -1,8 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import Row from '../ui/Row';
-import Heading from '../ui/Heading';
 import Spinner from '../ui/Spinner';
-import Container from '../ui/Container';
 import Img from '../ui/Img';
 import { getHeadline } from '../services/apiHeadline';
 import { getProfileImage } from '../services/apiProfileImage';
@@ -12,7 +10,46 @@ import ShowProjectRow from '../features/projects/ShowProjectRow';
 import { getContactHeadline } from '../services/apiContactHeadline';
 import { getContacts } from '../services/apiContacts';
 import { StyledNav } from '../ui/StyledNav';
-import ShowContactRow from '../features/contacts/ShowContactRow';
+import styled from 'styled-components';
+import Header from '../ui/Header';
+
+const StyledHome = styled.div`
+  display: grid;
+  grid-template-columns: var(--grid-column);
+`;
+
+const BgLeft = styled.div`
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 6;
+  height: 100%;
+  width: 20vw;
+  position: fixed;
+`;
+
+const BgRight = styled.div`
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 6;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 30vw;
+  position: fixed;
+`;
+
+const ImageContainer = styled.div`
+  top: 2rem;
+  width: 20rem;
+`;
+
+const UlContact = styled.ul`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  height: 5rem;
+`;
 
 function splitParagraph(text) {
   const seperator = '\n';
@@ -113,8 +150,8 @@ function Home() {
     : [];
 
   if (
-    isLoadingHeadline ||
     isLoadingProfileImage ||
+    isLoadingHeadline ||
     isLoadingParagraphs ||
     isLoadingProjects ||
     isLoadingContactHeadline ||
@@ -123,73 +160,72 @@ function Home() {
     return <Spinner />;
 
   return (
-    <>
-      <Container $variation='default' id='about'>
-        <Row type='horizontal' $variation='center'>
-          <Heading as='h2'>{subHeadline}</Heading>
+    <StyledHome>
+      <Header />
+      <section id='hero'>
+        <Row $variation='hero'>
+          <h2 className='font-l font-special'>{headlineText}</h2>
         </Row>
+        <ImageContainer>
+          <Img src={image} $variation='profile' alt='profile' />
+        </ImageContainer>
+      </section>
 
-        <Row type='horizontal' $variation='profileImage'>
-          <Img src={image}></Img>
-        </Row>
+      <section id='about'>
+        <h2 className='font-m font-special'>{paragraphOneTitle}</h2>
+        {paragraphOneSplitText.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </section>
 
-        <Row type='horizontal' $variation='center'>
-          <Heading as='h1'>{headlineText}</Heading>
-        </Row>
+      <section id='writer'>
+        <h2 className='font-m font-special'>{paragraphTwoTitle}</h2>
+        {paragraphTwoSplitText.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </section>
 
-        <Row type='horizontal' $variation='center'>
-          <Heading as='h3'>{paragraphOneTitle}</Heading>
-        </Row>
+      <section id='projects'>
+        <h2 className='font-m font-special'>Writings</h2>
+        {/* <hr /> */}
+        {projectDetails.map((project) => (
+          <ShowProjectRow project={project} key={project.projectId} />
+        ))}
+      </section>
 
-        <Row type='horizontal' $variation='center'>
-          {paragraphOneSplitText.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </Row>
-      </Container>
-
-      <Container $variation='default' id='writer'>
-        <Row type='horizontal' $variation='center'>
-          <Heading as='h3'>{paragraphTwoTitle}</Heading>
-        </Row>
-
-        <Row type='horizontal' $variation='center'>
-          {paragraphTwoSplitText.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </Row>
-      </Container>
-
-      <Container $variation='project'>
-        <Row type='horizontal' $variation='center'>
-          <Heading as='h3' $variation='padding'>
-            Writings
-          </Heading>
-          <hr />
-        </Row>
-
-        <Row type='horizontal' $variation='center'>
-          {projectDetails.map((project) => (
-            <ShowProjectRow project={project} key={project.projectId} />
-          ))}
-        </Row>
-      </Container>
-
-      <Container $variation='contact' id='contact'>
-        <Row type='horizontal' $variation='center'>
-          <Heading as='h1'>{contactHeadlineText}</Heading>
-        </Row>
-        <Row type='horizontal' $variation='center'>
-          <nav>
-            <StyledNav>
-              {contactDetails.map((contact) => (
-                <ShowContactRow contact={contact} key={contact.contactId} />
-              ))}
-            </StyledNav>
-          </nav>
-        </Row>
-      </Container>
-    </>
+      <section id='contact'>
+        <h2 className='font-l font-special'>{contactHeadlineText}</h2>
+        <nav>
+          <UlContact>
+            {contactDetails.map((contact) => (
+              <li key={contact.contactId}>
+                <a
+                  href={contact.url}
+                  className='font-xs font-special font-special-link'
+                >
+                  {contact.name}
+                </a>
+              </li>
+            ))}
+          </UlContact>
+          <StyledNav></StyledNav>
+        </nav>
+      </section>
+      <BgLeft>
+        <Img
+          src='../../public/background2.png'
+          $variation='bgLeft'
+          alt='background art1'
+        />
+      </BgLeft>
+      <BgRight>
+        <Img
+          src='../../public/background3.png'
+          $variation='bgRight'
+          alt='background art2'
+        />
+      </BgRight>
+    </StyledHome>
   );
 }
 

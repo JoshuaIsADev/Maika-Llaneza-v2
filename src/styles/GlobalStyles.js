@@ -21,8 +21,10 @@ const GlobalStyles = createGlobalStyle`
   --border-radius-md: 1rem;
   --border-radius-lg: 2rem;
 
-  --container-width: 600px;
-  --container-width-small: 450px;
+  --container-width: 40vw;
+  --container-width-small: 800px;
+
+  --grid-column: 20vw 40vw 40vw;
 }
 
 *,
@@ -31,13 +33,15 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 10px;
-
-
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Noto Serif', serif;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
   background-color: var(--background-color);
   overflow-x: hidden;
 }
@@ -48,41 +52,66 @@ html {
   overflow-x: hidden;
 }
 
-h1,
-h2 {
-  font-family: 'Noto Serif Display', serif;
-}
-
-h3,
-h4,
-h5,
-h6,
 p {
-  font-family: 'Noto Serif', serif
-}
-
-p {
-  font-size: 1.8rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   text-align: left;
-  line-height: 3.6rem;
-}
-
-h3 {
-  font-size: 1.8rem;
-  font-weight: 300;
-}
-
-h4 {
-  font-size: 1.4rem;
-  font-weight: 300;
-  color: var(--color-grey-300);
-  padding-bottom: .3rem;
+  line-height: 2rem;
 }
 
 a,
 li {
   text-decoration: none;
   list-style: none;
+  color: var(--color-grey-900);
+}
+
+a:hover {
+  color: var(--color-grey-300);
+}
+
+.font-special {
+  font-family: "Palette Mosaic", system-ui;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.font-l {
+  font-style: normal;
+  font-size: 6rem;
+  line-height: 6rem;
+}
+
+.font-m {
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.font-s {
+  font-style: normal;
+  font-size: 2rem;
+}
+
+.font-xs {
+  font-style: normal;
+  font-size: 1.5rem;
+}
+
+.font-xxs {
+  font-style: normal;
+  font-size: .8rem;
+  line-height: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-special-link:hover {
+font-size: 2.5rem;
+color: var(--color-grey-900);
 }
 
 input,
@@ -102,9 +131,8 @@ button:focus {
 
 button {
   cursor: pointer;
-  font-family: 'Noto Serif', serif;
+  font-family: "Inter", sans-serif;
   width: 100%;
-  
 }
 
 hr {
@@ -113,12 +141,48 @@ hr {
   border-top: 1px solid var(--color-grey-200);
 }
 
-#about, #writer {
-  scroll-margin-top: 8rem;
+#hero {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 12rem;
+}
+
+#about {
+  grid-column: 2 / span 1;
+  grid-row: 3 / span 1;
+}
+
+#writer {
+  grid-column: 2 / span 1;
+  grid-row: 4 / span 1;
+}
+
+#projects {
+  grid-column: 2 / span 1;
+  grid-row: 5 / span 1;
+}
+
+#about, #writer, #projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  scroll-margin-top: 12rem;
 }
 
 #contact {
+  grid-column: 2 / span 1;
+  grid-row: 6 / span 1;
   scroll-margin-top: 0rem;
+  /* text-align: center; */
+}
+
+#hero, #about, #writer, #projects, #contact {
+  padding-bottom: 6rem;
 }
 `;
 

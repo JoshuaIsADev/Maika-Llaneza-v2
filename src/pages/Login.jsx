@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import LoginForm from '../features/authentication/LoginForm';
 import Heading from '../ui/Heading';
 import Row from '../ui/Row';
+import Container from '../ui/Container';
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -16,14 +17,16 @@ const LoginLayout = styled.main`
 
 function Login() {
   return (
-    <LoginLayout>
+    // <LoginLayout>
+    <Container $variation='default' id='about'>
       <Row type='horizontal' $variation='center'>
         <Heading as='h3' $variation='center'>
           Hello Maika, log in to access the CMS
         </Heading>
       </Row>
       <LoginForm />
-    </LoginLayout>
+    </Container>
+    // </LoginLayout>
   );
 }
 
