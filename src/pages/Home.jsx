@@ -178,40 +178,46 @@ function Home() {
 
   return (
     <StyledHome>
-      {/* <Header /> */}
-      <section id='hero'>
-        <Row $variation='hero'>
-          <h2 className='font-l font-special'>{headlineText}</h2>
-        </Row>
+      <section id='hero' aria-labelledby='hero-heading'>
+        <h2 id='hero-heading' className='font-l font-special'>
+          {headlineText}
+        </h2>
         <ImageContainer>
           <Img src={image} $variation='profile' alt='profile' />
         </ImageContainer>
       </section>
 
-      <section id='about'>
-        <h2 className='font-m font-special'>{paragraphOneTitle}</h2>
+      <section id='about' aria-labelledby='about-heading'>
+        <h2 id='about-heading' className='font-m font-special'>
+          {paragraphOneTitle}
+        </h2>
         {paragraphOneSplitText.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
       </section>
 
-      <section id='writer'>
-        <h2 className='font-m font-special'>{paragraphTwoTitle}</h2>
+      <section id='writer' aria-labelledby='writer-heading'>
+        <h2 id='writer-heading' className='font-m font-special'>
+          {paragraphTwoTitle}
+        </h2>
         {paragraphTwoSplitText.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
       </section>
 
-      <section id='projects'>
-        <h2 className='font-m font-special'>Writings</h2>
-        {/* <hr /> */}
+      <section id='projects' aria-labelledby='projects-heading'>
+        <h2 id='projects-heading' className='font-m font-special'>
+          Writings
+        </h2>
         {projectDetails.map((project) => (
           <ShowProjectRow project={project} key={project.projectId} />
         ))}
       </section>
 
-      <section id='contact'>
-        <h2 className='font-l font-special'>{contactHeadlineText}</h2>
+      <section id='contact' aria-labelledby='contact-heading'>
+        <h2 id='contact-heading' className='font-l font-special'>
+          {contactHeadlineText}
+        </h2>
         <UlContact>
           {contactDetails.map((contact) => (
             <li key={contact.contactId}>
