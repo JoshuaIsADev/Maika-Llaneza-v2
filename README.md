@@ -4,8 +4,6 @@
 
 This is a portfolio project for a published author which reads her bio, profile image, and projects from Supabase backend. It also has a content management app so she can update her content.
 
-The site is also accessible per client request. It has a score of 100 from Google LightHouse and is manually tested on Microsoft Narrator.
-
 Built with React, Vite and Supabase as the backend.
 
 Deployed on Netlify
